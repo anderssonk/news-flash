@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./NewsFeed.css";
 import NewsFeedView from "./NewsFeedView";
+import ApiConfig from "../Utility/ApiConfig";
 
 const NewsFeed = () => {
   const [data, setData] = useState([]);
@@ -22,11 +23,13 @@ const NewsFeed = () => {
     var url = "";
 
     type === "everything" //to handle change between "everything" or "top-headlines"
-      ? (url = `http://newsapi.org/v2/${type}?q=${searchString}&apiKey=ad625da18cbf4029bf53d20dc9fdc5de`)
+      ? (url = `http://newsapi.org/v2/${type}?q=${searchString}&apiKey=${
+          ApiConfig().API_KEY
+        }`)
       : (url =
           `http://newsapi.org/v2/${type}?` +
           `country=${country}&` +
-          "apiKey=ad625da18cbf4029bf53d20dc9fdc5de");
+          `apiKey=${ApiConfig().API_KEY}`);
 
     var req = new Request(url);
 
