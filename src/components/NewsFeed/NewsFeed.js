@@ -8,7 +8,7 @@ const NewsFeed = () => {
   const [loading, setLoading] = useState(true); //TODO use to display spinner
 
   useEffect(() => {
-    getDataFromAPITopHeadlines("everything", "se", "bernie sanders"); //  "everything" for search in API needs searchString, "top-headlines" for headlines needs country code,
+    getDataFromAPITopHeadlines("everything", "se", "summer"); //  "everything" for search in API needs searchString, "top-headlines" for headlines needs country code,
     // setIsLoading(false);
   }, [loading]);
 
