@@ -1,29 +1,22 @@
 import React from "react";
 
-const NewsFeedView = () => {
+const NewsFeedView = ({ news }) => {
+  const displayArticle = article => {
+    return (
+      <div className="articleDisplay" key={article.url}>
+        <h3>{article.title}</h3>
+
+        <h5>{article.source.name}</h5>
+        <img className="articleImg" src={article.urlToImage} />
+        <p>published at : {article.publishedAt}</p>
+      </div>
+    );
+  };
+
   return (
-    <div className="newsContainer">
-      NewsFeedView
-      <div className="article">
-        <div>Artikelnamn 1</div>
-        <div>Artikelbild 1</div>
-      </div>
-      <div className="article">
-        <div>Artikelnamn 2</div>
-        <div>Artikelbild 2</div>
-      </div>
-      <div className="article">
-        <div>Artikelnamn 3</div>
-        <div>Artikelbild 3</div>
-      </div>
-      <div className="article">
-        <div>Artikelnamn 2</div>
-        <div>Artikelbild 2</div>
-      </div>
-      <div className="article">
-        <div>Artikelnamn 2</div>
-        <div>Artikelbild 2</div>
-      </div>
+    <div className="App">
+      Hello NewsFeedView
+      {news.map(article => displayArticle(article))}
     </div>
   );
 };

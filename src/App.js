@@ -1,15 +1,12 @@
-import React from "react";
-import logo from "./logo.svg";
-import NewsFeed from "./components/NewsFeed/NewsFeed";
-
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import NewsFeed from "./components/NewsFeed/NewsFeed";
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <NewsFeed />
-      </div>
+      Hello world
+      <NewsFeed />
     </div>
   );
 }
