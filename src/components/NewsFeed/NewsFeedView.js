@@ -14,7 +14,7 @@ const NewsFeedView = ({ news }) => {
   };
 
   return (
-    <div className="App">
+    <div>
       Hello NewsFeedView
       {news.map(article => displayArticle(article))}
     </div>

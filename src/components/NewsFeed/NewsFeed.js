@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./NewsFeed.css";
 import NewsFeedView from "./NewsFeedView";
-import ApiConfig from "../Utility/ApiConfig";
+import ApiConfig from "../../Utility/ApiConfig";
 
 const NewsFeed = () => {
   const [data, setData] = useState([]);
@@ -43,7 +43,7 @@ const NewsFeed = () => {
   };
 
   return (
-    <div>
+    <div className="newsContainer">
       Hello NewsFeed
       <NewsFeedView news={data} />
     </div>
