@@ -1,51 +1,36 @@
-import React, { useState, useEffect } from "react";
-import "./NewsFeed.css";
+import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
-import ApiConfig from "../../Utility/ApiConfig";
+import { ModelContext } from "../../NewsContext";
 
 const NewsFeed = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true); //TODO use to display spinner
+  const { model } = useContext(ModelContext);
+  const [searchResultState, setSearchResultState] = useState(null);
+  const [countryState, setCountryState] = useState("se");
+  const [textState, setTextState] = useState("");
+  const [typeState, setTypeState] = useState("top-headlines");
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getDataFromAPITopHeadlines("everything", "se", "summer"); //  "everything" for search in API needs searchString, "top-headlines" for headlines needs country code,
-    // setIsLoading(false);
-  }, [loading]);
+    updateSearchResults();
+  }, []);
 
-  const getDataFromAPITopHeadlines = (type, country = "se", searchString) => {
-    //arguments used to change type of API call, type ="everything" uses searchString="some search string ", type="top-headlines" uses country="us,uk,se etc..."
-    //returns a promise
+  const updateSearchResults = () => {
+    setIsLoading(true);
+    model.searchNews(typeState, countryState).then(data => {
+      setSearchResultState(data);
+      data.map(article => {
+        article.id = article.url;
+      }); //sätter ett ID på varje article
+      model.addToFeed(data);
 
-    function handleHTTPError(response) {
-      if (response.ok) return response;
-      throw Error(response.statusText);
-    }
-    var url = "";
-
-    type === "everything" //to handle change between "everything" or "top-headlines"
-      ? (url = `http://newsapi.org/v2/${type}?q=${searchString}&apiKey=${
-          ApiConfig().API_KEY
-        }`)
-      : (url =
-          `http://newsapi.org/v2/${type}?` +
-          `country=${country}&` +
-          `apiKey=${ApiConfig().API_KEY}`);
-
-    var req = new Request(url);
-
-    return fetch(req)
-      .then(handleHTTPError)
-      .then(response => response.json())
-      .then(response => {
-        setData(response.articles);
-      })
-      .catch(console.error);
+      setIsLoading(false);
+    });
   };
 
   return (
-    <div className="newsContainer">
-      Hello NewsFeed
-      <NewsFeedView news={data} />
+    <div>
+      <NewsFeedView className="newsContainer" news={searchResultState} />
     </div>
   );
 };
