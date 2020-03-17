@@ -4,18 +4,52 @@ class NewsModel {
   constructor() {
     this.starred = [];
     this.feed = [];
+    this.subscribers = [];
+  }
+  addObserver(callback) {
+    console.log("NewsModel: addObserver: ", callback);
+    this.callback = callback;
+    this.subscribers.push(callback);
+  }
+  notifyObservers(whatHappened) {
+    //calls what's in subscribers list
+    console.log("NewsModel: notifyObservers: ", whatHappened);
+    this.subscribers.forEach(callback => callback(whatHappened));
+  }
+
+  removeObserver(observer) {
+    this.subscribers = this.subscribers.filter(each => observer !== each);
   }
 
   addToFeed(array) {
     this.feed = [...this.feed, array];
   }
 
+  getStarred() {
+    // console.log("getStarred ", this.starred);
+    var starred = this.starred;
+    return starred;
+  }
+
   addToStarred(url) {
-    this.starred = [...this.starred, this.feed.filter(news => news.id === url)];
+    console.log("addToStarred 1 ", this.starred);
+    const addedNews = this.feed[0].filter(article => article.id === url);
+
+    this.starred = this.starred.concat(addedNews);
+    this.notifyObservers({ upd_starred: this.starred });
+
+    console.log("addToStarred 2 ", this.starred);
+
+    // console.log(
+    //   "hej",
+    //   this.feed[0].filter(article => article.id === url)
+    // );
   }
 
   removeFromStarred(url) {
-    this.starred = [this.starred.filter(news => news.id !== url)];
+    // const currentStarred = this.starred
+    this.starred = this.starred.filter(news => news.id !== url);
+    this.notifyObservers({ removed: this.starred });
   }
 
   handleQuery(query) {
