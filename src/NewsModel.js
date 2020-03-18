@@ -21,8 +21,15 @@ class NewsModel {
     this.subscribers = this.subscribers.filter(each => observer !== each);
   }
 
-  addToFeed(array) {
-    this.feed = [...this.feed, array];
+  addToFeed(newFeed) {
+    // this.feed.includes()
+    // const notInOld = newFeed.filter(article => this.feed.includes(article));
+    // console.log("not in old", notInOld);
+    // newFeed.filter(article => article.url )
+    // array.filter(articleIn=> articleIn.url this.feed )
+    this.feed = this.feed.concat(newFeed);
+
+    // this.feed = [...this.feed, array];
   }
 
   getStarred() {
@@ -30,10 +37,13 @@ class NewsModel {
     var starred = this.starred;
     return starred;
   }
+  getFeed() {
+    return this.feed;
+  }
 
   addToStarred(url) {
     if (!this.starred.filter(article => article.id === url).length > 0) {
-      const addedNews = this.feed[0].filter(article => article.id === url);
+      const addedNews = this.feed.filter(article => article.id === url);
       this.starred = this.starred.concat(addedNews);
       this.notifyObservers({ upd_starred: this.starred });
     } else {

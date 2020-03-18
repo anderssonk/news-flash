@@ -2,11 +2,11 @@ import React from "react";
 import ArticleDisplay from "../ArticleDisplay/ArticleDisplay";
 
 const NewsFeedView = ({ news }) => {
-  console.log(news);
+  console.log("News feed loaded:", news);
   return (
     news && (
       <div className="App">
-        NewsFeedView
+        <h3>NewsFeedView</h3>
         {news.map(article => (
           <ArticleDisplay article={article} />
         ))}

@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
+import Search from "./NewsSearch";
+import Categories from "./NewsCategories";
+
 import { ModelContext } from "../../NewsContext";
 
 const NewsFeed = () => {
@@ -8,13 +11,15 @@ const NewsFeed = () => {
   const [countryState, setCountryState] = useState("se");
   const [textState, setTextState] = useState("");
   const [typeState, setTypeState] = useState("top-headlines");
+  const [categoryState, setCategoryState] = useState("general");
 
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     updateSearchResults();
-  }, []);
+  }, [countryState]);
 
+  console.log("feeeed", model.getFeed());
   const updateSearchResults = () => {
     setIsLoading(true);
     model.searchNews(typeState, countryState).then(data => {
@@ -30,6 +35,8 @@ const NewsFeed = () => {
 
   return (
     <div>
+      <Search setCountryCode={countrycode => setCountryState(countrycode)} />
+      <Categories />
       <NewsFeedView className="newsContainer" news={searchResultState} />
     </div>
   );

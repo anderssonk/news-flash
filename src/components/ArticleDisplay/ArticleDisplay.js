@@ -6,7 +6,7 @@ const ArticleDisplay = ({ article }) => {
   const starArticle = () => model.addToStarred(article.url);
 
   return (
-    <div key={article.id} className="articleDisplay">
+    <div key={article.url} className="articleDisplay">
       <h3>{article.title}</h3>
 
       <a href={article.url} target="_blank">
