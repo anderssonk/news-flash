@@ -22,7 +22,9 @@ class NewsModel {
   }
 
   addToFeed(array) {
-    this.feed = [...this.feed, array];
+    this.feed = this.feed.concat(array);
+
+    // this.feed = [...this.feed, array];
   }
 
   getStarred() {
@@ -30,10 +32,13 @@ class NewsModel {
     var starred = this.starred;
     return starred;
   }
+  getFeed() {
+    return this.feed;
+  }
 
   addToStarred(url) {
     if (!this.starred.filter(article => article.id === url).length > 0) {
-      const addedNews = this.feed[0].filter(article => article.id === url);
+      const addedNews = this.feed.filter(article => article.id === url);
       this.starred = this.starred.concat(addedNews);
       this.notifyObservers({ upd_starred: this.starred });
     } else {
