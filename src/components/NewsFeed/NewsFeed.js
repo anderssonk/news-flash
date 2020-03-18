@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
-import Search from "./NewsSearch";
-import Categories from "./NewsCategories";
+import Search from "./NewsSearch"; // Drop down:en
+import NewsCategories from "./NewsCategories";
 
 import { ModelContext } from "../../NewsContext";
 
@@ -30,8 +30,10 @@ const NewsFeed = () => {
 
 	return (
 		<div>
-			<Search setCountryCode={countrycode => setCountryState(countrycode)} />
-			<Categories />
+			<Search country={countrycode => setCountryState(countrycode)} />
+			<NewsCategories
+				category={categoryState => setCategoryState(categoryState)}
+			/>
 			<NewsFeedView className="newsContainer" news={searchResultState} />
 		</div>
 	);
