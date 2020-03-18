@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModelContext } from "../../NewsContext";
 
 const ArticleDisplay = ({ article }) => {
-	return (
-		<div className="articleDisplay" key={article.url}>
-			<h3>{article.title}</h3>
+  const { model } = useContext(ModelContext);
+  const starArticle = () => model.addToStarred(article.url);
 
-			<h5>{article.source.name}</h5>
-			<img className="articleImg" src={article.urlToImage} alt="articleimg" />
-			<p>published at : {article.publishedAt}</p>
-		</div>
-	);
+  return (
+    <div key={article.id} className="articleDisplay">
+      <h3>{article.title}</h3>
+
+      <a href={article.url} target="_blank">
+        <h5>{article.source.name}</h5>
+      </a>
+      <img className="articleImg" src={article.urlToImage} alt="articleimg" />
+      <p>published at : {article.publishedAt}</p>
+      <button onClick={starArticle}>Star</button>
+    </div>
+  );
 };
 
 export default ArticleDisplay;
