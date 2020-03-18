@@ -6,40 +6,35 @@ import Categories from "./NewsCategories";
 import { ModelContext } from "../../NewsContext";
 
 const NewsFeed = () => {
-  const { model } = useContext(ModelContext);
-  const [searchResultState, setSearchResultState] = useState(null);
-  const [countryState, setCountryState] = useState("se");
-  const [textState, setTextState] = useState("");
-  const [typeState, setTypeState] = useState("top-headlines");
-  const [categoryState, setCategoryState] = useState("general");
+	const { model } = useContext(ModelContext);
+	const [searchResultState, setSearchResultState] = useState(null);
+	const [countryState, setCountryState] = useState("se");
+	const [textState, setTextState] = useState("");
+	const [typeState, setTypeState] = useState("top-headlines");
+	const [categoryState, setCategoryState] = useState("general");
 
-  const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    updateSearchResults();
-  }, [countryState]);
+	useEffect(() => {
+		updateSearchResults();
+	}, [countryState]);
 
-  console.log("feeeed", model.getFeed());
-  const updateSearchResults = () => {
-    setIsLoading(true);
-    model.searchNews(typeState, countryState).then(data => {
-      setSearchResultState(data);
-      data.map(article => {
-        article.id = article.url;
-      }); //sätter ett ID på varje article
-      model.addToFeed(data);
+	const updateSearchResults = () => {
+		setIsLoading(true);
+		model.searchNews(typeState, countryState).then(data => {
+			setSearchResultState(data);
+			data.map(article => model.addToFeed(article));
+			setIsLoading(false);
+		});
+	};
 
-      setIsLoading(false);
-    });
-  };
-
-  return (
-    <div>
-      <Search setCountryCode={countrycode => setCountryState(countrycode)} />
-      <Categories />
-      <NewsFeedView className="newsContainer" news={searchResultState} />
-    </div>
-  );
+	return (
+		<div>
+			<Search setCountryCode={countrycode => setCountryState(countrycode)} />
+			<Categories />
+			<NewsFeedView className="newsContainer" news={searchResultState} />
+		</div>
+	);
 };
 
 export default NewsFeed;
