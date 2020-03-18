@@ -32,18 +32,13 @@ class NewsModel {
   }
 
   addToStarred(url) {
-    console.log("addToStarred 1 ", this.starred);
-    const addedNews = this.feed[0].filter(article => article.id === url);
-
-    this.starred = this.starred.concat(addedNews);
-    this.notifyObservers({ upd_starred: this.starred });
-
-    console.log("addToStarred 2 ", this.starred);
-
-    // console.log(
-    //   "hej",
-    //   this.feed[0].filter(article => article.id === url)
-    // );
+    if (!this.starred.filter(article => article.id === url).length > 0) {
+      const addedNews = this.feed[0].filter(article => article.id === url);
+      this.starred = this.starred.concat(addedNews);
+      this.notifyObservers({ upd_starred: this.starred });
+    } else {
+      console.log(url, " has already been starred.");
+    }
   }
 
   removeFromStarred(url) {
