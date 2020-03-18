@@ -74,8 +74,8 @@ class NewsModel {
 		throw Error(response.statusText); // otherwise logs an error
 	}
 
-	searchNews(type, country = "se") {
-		let x = this.handleQuery(`${type}?country=${country}`);
+	searchNews(type, country = "se", category = "") {
+		let x = this.handleQuery(`${type}?country=${country}&category=${category}`);
 		return x.then(data => data.articles);
 	}
 

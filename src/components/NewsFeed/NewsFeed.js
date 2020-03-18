@@ -17,11 +17,11 @@ const NewsFeed = () => {
 
 	useEffect(() => {
 		updateSearchResults();
-	}, [countryState]);
+	}, [countryState, categoryState]);
 
 	const updateSearchResults = () => {
 		setIsLoading(true);
-		model.searchNews(typeState, countryState).then(data => {
+		model.searchNews(typeState, countryState, categoryState).then(data => {
 			setSearchResultState(data);
 			data.map(article => model.addToFeed(article));
 			setIsLoading(false);

@@ -26,9 +26,13 @@ const NewsCategories = ({ category }) => {
 
 	return (
 		<div id="categories">
-			{categories.map(category => (
-				<button className="btn" value="category">
-					{category}
+			{categories.map(cat => (
+				<button
+					className="btn"
+					value={cat}
+					onClick={option => category(option.target.value)}
+				>
+					{cat}
 				</button>
 			))}
 		</div>
