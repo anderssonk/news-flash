@@ -32,7 +32,7 @@ const NewsFeed = () => {
 		<div>
 			<Search country={countrycode => setCountryState(countrycode)} />
 			<NewsCategories
-				category={categoryState => setCategoryState(categoryState)}
+				setCategory={categoryState => setCategoryState(categoryState)}
 			/>
 			<NewsFeedView className="newsContainer" news={searchResultState} />
 		</div>

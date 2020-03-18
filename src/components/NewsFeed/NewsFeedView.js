@@ -2,7 +2,7 @@ import React from "react";
 import ArticleDisplay from "../ArticleDisplay/ArticleDisplay";
 
 const NewsFeedView = ({ news }) => {
-	console.log("News feed (NewsFeedView.js):", news);
+	//console.log("News feed (NewsFeedView.js):", news);
 	return (
 		news && (
 			<div className="App">

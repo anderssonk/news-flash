@@ -2,7 +2,7 @@ import React from "react";
 
 // TODO: Style:a aktiv länk
 
-const NewsCategories = ({ category }) => {
+const NewsCategories = ({ setCategory }) => {
 	//   Add active class to the current button (highlight it), to make button look "activated""
 	// var btns = document.getElementsByClassName("btn");
 	// for (var i = 0; i < btns.length; i++) {
@@ -22,16 +22,21 @@ const NewsCategories = ({ category }) => {
 		"technology"
 	];
 
+	const handleClick = option => {
+		const buttons = [...document.getElementById("categories").children];
+		buttons.forEach(element => {
+			element.classList.remove("active");
+		});
+		setCategory(option.target.value);
+		option.target.classList.add("active");
+	};
+
 	//___________________________________
 
 	return (
 		<div id="categories">
 			{categories.map(cat => (
-				<button
-					className="btn"
-					value={cat}
-					onClick={option => category(option.target.value)}
-				>
+				<button className="btn" value={cat} onClick={handleClick}>
 					{cat}
 				</button>
 			))}
