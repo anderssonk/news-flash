@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
 import Search from "./NewsSearch";
+import Categories from "./NewsCategories";
 
 import { ModelContext } from "../../NewsContext";
 
@@ -10,6 +11,7 @@ const NewsFeed = () => {
   const [countryState, setCountryState] = useState("se");
   const [textState, setTextState] = useState("");
   const [typeState, setTypeState] = useState("top-headlines");
+  const [categoryState, setCategoryState] = useState("general");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,6 +36,7 @@ const NewsFeed = () => {
   return (
     <div>
       <Search setCountryCode={countrycode => setCountryState(countrycode)} />
+      <Categories />
       <NewsFeedView className="newsContainer" news={searchResultState} />
     </div>
   );

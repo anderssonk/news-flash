@@ -21,8 +21,13 @@ class NewsModel {
     this.subscribers = this.subscribers.filter(each => observer !== each);
   }
 
-  addToFeed(array) {
-    this.feed = this.feed.concat(array);
+  addToFeed(newFeed) {
+    // this.feed.includes()
+    // const notInOld = newFeed.filter(article => this.feed.includes(article));
+    // console.log("not in old", notInOld);
+    // newFeed.filter(article => article.url )
+    // array.filter(articleIn=> articleIn.url this.feed )
+    this.feed = this.feed.concat(newFeed);
 
     // this.feed = [...this.feed, array];
   }
