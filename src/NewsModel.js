@@ -21,15 +21,19 @@ class NewsModel {
     this.subscribers = this.subscribers.filter(each => observer !== each);
   }
 
-  addToFeed(newFeed) {
-    // this.feed.includes()
-    // const notInOld = newFeed.filter(article => this.feed.includes(article));
-    // console.log("not in old", notInOld);
-    // newFeed.filter(article => article.url )
-    // array.filter(articleIn=> articleIn.url this.feed )
-    this.feed = this.feed.concat(newFeed);
+  addToFeed(article) {
+    if (!this.feed.filter(item => item.url === article.url).length > 0) {
+      this.feed = [...this.feed, article];
+    }
+  }
 
-    // this.feed = [...this.feed, array];
+  addToMenu(dish) {
+    // debugger;
+    if (!this.dishes.filter(e => e.id === dish.id).length > 0) {
+      this.addTypeToDish(dish);
+      this.dishes = [...this.dishes, dish]; // spread is an immutable object - creates new array
+      this.notifyObservers({ add_dish: dish });
+    }
   }
 
   getStarred() {
@@ -42,9 +46,10 @@ class NewsModel {
   }
 
   addToStarred(url) {
-    if (!this.starred.filter(article => article.id === url).length > 0) {
-      const addedNews = this.feed.filter(article => article.id === url);
-      this.starred = this.starred.concat(addedNews);
+    if (!this.starred.filter(article => article.url === url).length > 0) {
+      // om url inte redan är i starred
+      const addedNews = this.feed.filter(article => article.url === url); //
+      this.starred = this.starred.concat(addedNews); // lägg till artikeln med den url:en
       this.notifyObservers({ upd_starred: this.starred });
     } else {
       console.log(url, " has already been starred.");
@@ -53,7 +58,7 @@ class NewsModel {
 
   removeFromStarred(url) {
     // const currentStarred = this.starred
-    this.starred = this.starred.filter(news => news.id !== url);
+    this.starred = this.starred.filter(news => news.url !== url);
     this.notifyObservers({ removed: this.starred });
   }
 
@@ -69,8 +74,8 @@ class NewsModel {
     throw Error(response.statusText); // otherwise logs an error
   }
 
-  searchNews(type, country = "se") {
-    let x = this.handleQuery(`${type}?country=${country}`);
+  searchNews(type, country = "se", category = "") {
+    let x = this.handleQuery(`${type}?country=${country}&category=${category}`);
     return x.then(data => data.articles);
   }
 

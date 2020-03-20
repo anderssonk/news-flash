@@ -1,7 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
-import Search from "./NewsSearch";
-import Categories from "./NewsCategories";
 
 import { ModelContext } from "../../NewsContext";
 
@@ -17,28 +15,23 @@ const NewsFeed = () => {
 
   useEffect(() => {
     updateSearchResults();
-  }, [countryState]);
+  }, [countryState, categoryState]);
 
-  console.log("feeeed", model.getFeed());
   const updateSearchResults = () => {
     setIsLoading(true);
-    model.searchNews(typeState, countryState).then(data => {
+    model.searchNews(typeState, countryState, categoryState).then(data => {
       setSearchResultState(data);
-      data.map(article => {
-        article.id = article.url;
-      }); //sätter ett ID på varje article
-      model.addToFeed(data);
-
+      data.map(article => model.addToFeed(article));
       setIsLoading(false);
     });
   };
 
   return (
-    <div>
-      <Search setCountryCode={countrycode => setCountryState(countrycode)} />
-      <Categories />
-      <NewsFeedView className="newsContainer" news={searchResultState} />
-    </div>
+    <NewsFeedView
+      news={searchResultState}
+      country={countrycode => setCountryState(countrycode)}
+      category={categoryState => setCategoryState(categoryState)}
+    />
   );
 };
 

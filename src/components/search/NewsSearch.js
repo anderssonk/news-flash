@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewsSearch = ({ setCountryCode }) => {
+const NewsSearch = ({ country }) => {
   const countries = {
     se: "Sweden",
     de: "Germany",
@@ -16,14 +16,13 @@ const NewsSearch = ({ setCountryCode }) => {
     country //JSX element option
   ) => (
     <option key={country} value={country}>
-      {" "}
       {countryNames[countryCodes.indexOf(country)]}
     </option>
   ));
   return (
     <div>
       <form>
-        <select onChange={option => setCountryCode(option.target.value)}>
+        <select onChange={option => country(option.target.value)}>
           {chooseCountry}
         </select>
       </form>

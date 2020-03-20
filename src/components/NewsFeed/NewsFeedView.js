@@ -1,18 +1,22 @@
 import React from "react";
 import ArticleDisplay from "../ArticleDisplay/ArticleDisplay";
+import Search from "../search/NewsSearch"; // Drop down:en
+import NewsCategories from "../search/NewsCategories";
 
-const NewsFeedView = ({ news }) => {
-  console.log("News feed loaded:", news);
-  return (
-    news && (
-      <div className="App">
-        <h3>NewsFeedView</h3>
-        {news.map(article => (
-          <ArticleDisplay article={article} />
-        ))}
-      </div>
-    )
-  );
+const NewsFeedView = ({ news, country, category }) => {
+	//console.log("News feed (NewsFeedView.js):", news);
+	return (
+		news && (
+			<div className="mainContent">
+				<h3>NewsFeedView</h3>
+				<Search country={country} />
+				<NewsCategories category={category} />
+				{news.map(article => (
+					<ArticleDisplay article={article} />
+				))}
+			</div>
+		)
+	);
 };
 
 export default NewsFeedView;
