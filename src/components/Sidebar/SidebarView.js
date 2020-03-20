@@ -1,18 +1,13 @@
 import React from "react";
 
 const SidebarView = ({ starred, remove }) => {
-	const truncateString = (str, num) => {
-		if (str.length <= num) {
-			return str;
-		}
-		return str.slice(0, num) + "...";
-	};
-
 	const starredDisplay = starredArray => {
 		return starredArray.map(article => (
-			<div className="sideBarDisplay" key={article.url}>
-				<div className="newsSource">{article.source.name}</div>
-				{truncateString(article.title, 40)}
+			<div className="starredDisplay" key={article.url}>
+				<div id="starredTitle">{article.title}</div>
+				<a href="article.url">
+					<div id="starredSource">{article.source.name}</div>
+				</a>
 				<button onClick={() => remove(article.url)}>X</button>
 			</div>
 		));
@@ -20,7 +15,7 @@ const SidebarView = ({ starred, remove }) => {
 
 	return (
 		<div>
-			<h3>SidebarView</h3>
+			<h4>STARRED ARTICLES</h4>
 			{starred ? starredDisplay(starred) : "no starred articles"}
 		</div>
 	);

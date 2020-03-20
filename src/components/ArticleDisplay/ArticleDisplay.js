@@ -7,12 +7,15 @@ const ArticleDisplay = ({ article }) => {
 
 	return (
 		<div key={article.url} className="articleDisplay">
+			<div id="img-container">
+				<img src={article.urlToImage} alt="articleimg" />
+			</div>
 			<h3>{article.title}</h3>
 
 			<a href={article.url} target="blank">
 				<h5>{article.source.name}</h5>
 			</a>
-			<img className="articleImg" src={article.urlToImage} alt="articleimg" />
+
 			<p>published at : {article.publishedAt}</p>
 			<button onClick={starArticle}>Star</button>
 		</div>

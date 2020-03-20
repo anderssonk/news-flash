@@ -1,7 +1,7 @@
 import React from "react";
 import ArticleDisplay from "../ArticleDisplay/ArticleDisplay";
-import Search from "../search/NewsSearch"; // Drop down:en
-import NewsCategories from "../search/NewsCategories";
+import CountrySearch from "../search/NewsSearch"; // Drop down:en
+import CategorySearch from "../search/NewsCategories";
 
 const NewsFeedView = ({ news, country, category }) => {
 	//console.log("News feed (NewsFeedView.js):", news);
@@ -9,11 +9,15 @@ const NewsFeedView = ({ news, country, category }) => {
 		news && (
 			<div className="mainContent">
 				<h3>NewsFeedView</h3>
-				<Search country={country} />
-				<NewsCategories category={category} />
-				{news.map(article => (
-					<ArticleDisplay article={article} />
-				))}
+				<div className="search-container">
+					<CountrySearch country={country} />
+					<CategorySearch category={category} />
+				</div>
+				<div className="generated-news">
+					{news.map(article => (
+						<ArticleDisplay article={article} />
+					))}
+				</div>
 			</div>
 		)
 	);

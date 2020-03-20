@@ -1,62 +1,90 @@
+body {
+	font-family: "Benton Sans", sans-serif;
+}
+
 .container {
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* grid-template-rows: 20vh 1fr 1fr; */
-  grid-gap: 5px;
+	height: 100%;
+	display: grid;
+	background-color: #eeeeee;
+	grid-template-columns: repeat(7, 1fr);
+	grid-gap: 5px;
 }
 
 .sideBar {
-  grid-column: 4/5;
-  background-color: grey;
+	grid-column: 6/7;
+	background-color: #fff;
 }
 
 .mainContent {
-  grid-column: 1/4;
-  background-color: rgb(40, 160, 190);
+	grid-column: 2/6;
+	background-color: #fff;
+	display: grid;
+	grid-template-rows: repeat(2);
+}
 
-  display: grid;
-  grid-template-rows: 1fr 5fr;
+.search-container {
+	height: 10vh;
+	padding: 10px;
 }
+
+.generated-news {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
 #categories {
-  grid-rows: 1/1;
+	grid-template-rows: 1/1;
 }
+
 .articleDisplay {
-  width: 10vw;
-  border: 2px solid grey;
+	min-width: fit-content;
+	background-color: #fff;
+	margin: 10px;
 }
 
 .articleDisplay img {
-  width: inherit;
+	max-width: 100%;
 }
 
-.sideBarDisplay {
-  border-radius: 5px;
-  /* border: 1px solid black; */
-  background: linear-gradient(#e66465, #9198e5);
-  margin: 10px;
-
-  padding: 5px;
+.img-container {
+	background-color: #666;
 }
-.newsSource {
-  border-radius: 2px;
-  background-color: rgb(82, 134, 84);
-  font-weight: bold;
+
+.starredDisplay {
+	background: #f8f8f8;
+	border-bottom: medium solid #eeeeee;
+	margin: 10px;
+	padding: 10px;
+}
+
+#starredSource {
+	border-radius: 2px;
+	font-style: italic;
+}
+
+#starredTitle {
+	color: #2773c6;
+	font-weight: bold;
+	word-wrap: break-word;
+}
+
+#starredTitle:hover {
+	color: #235c99;
 }
 
 /* Category buttons */
 .btn {
-  border: none;
-  outline: none;
-  padding: 10px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-  font-size: 18px;
+	border: none;
+	outline: none;
+	padding: 10px 16px;
+	background-color: #f1f1f1;
+	cursor: pointer;
+	font-size: 18px;
 }
 
 /* Style the active class, and buttons on mouse-over */
 .active,
 .btn:hover {
-  background-color: #666;
-  color: white;
+	background-color: #666;
+	color: white;
 }
