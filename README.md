@@ -6,7 +6,7 @@
 
 The main purpose of the application is to let users search among and read top news stories. A news feed containing previews of news stories as well as a sidebar containing starred items will be shown on the page. A click on a dish will show a detailed view of the dish. [Link to project proposal](https://docs.google.com/document/d/12wm2Mx144A_1xpNfDBL6Xi5HL_HaQ-QJQVoBJuQYewk/edit?usp=sharing) 
 
-The **component file structure** is (for now)  as follows: 
+The **component structure** is (for now)  as follows: 
 
 ```
 App.js
@@ -16,6 +16,8 @@ App.js
   |-- NewsFeed 
   |     |-- NewsFeed.js
   |     |__ NewsFeedView.js
+              |-- NewsSearch.js
+              |__ NewsCategories.js
   |
   |-- SelectedArticle
   |     |-- SelectedArticle.js
@@ -25,24 +27,30 @@ App.js
         |-- Sidebar.js
         |__ SidebarView.js
 ``` 
-
+**Note** that this is *not the same* structure as the file structure!
 
 ### What we have done ###
 
-- Bootstrapped project with CRA 
+- Bootstrapped project with Create React App
 - Setup basic framework code
 - Styled some components with CSS stylesheets 
+- Created a NewsModel
+- React context API for the NewsModel
+- Made our first API call (used in the search function below) 
+- A search function which allows the user to search by
+    - country 
+    - news category 
+- A "star" button on each article (ArticleDisplay) that adds the article to a sidebar. 
+- A sidebar containing starred articles (which can be removed by clicking on a button) 
 
 ### What we are planning on doing  ###
-
-- **TODO BEFORE MID-REVIEW:** Make our first API call 
+- Implement a search function allowing the user to enter a string to search by. 
+- Create a more detailed view for each article (SelectedArticleView)
 - More styling
-- Create a NewsModel 
 - React routes 
-- React context API 
-- A "star" button on ArticleDisplay as well as SelectedArticleView that adds article to the sidebar. 
-
-
+- Manipulate the data in the API (some kind of calculation) 
+- “Recommended for you”-feature (see our project proposal for more details) 
+- Drag and drop (if we have time) 
 
 ## Commit Messages 
 ```
