@@ -1,0 +1,31 @@
+.btn {
+	border-color: transparent;
+	height: 1.8rem;
+	min-width: 4rem;
+}
+
+.btn-primary {
+	background: #1d70b8;
+}
+
+.btn-primary:hover {
+	background: #00539b;
+}
+
+.btn-secondary {
+	background-color: blue;
+}
+
+.btn-tertiary {
+	background-color: red;
+}
+
+.starred {
+	border: none;
+	color: #2b2b2b;
+	font-size: 1.8rem;
+	background-color: transparent;
+}
+
+.starred:hover {
+}
