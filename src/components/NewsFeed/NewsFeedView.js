@@ -4,7 +4,6 @@ import CountrySearch from "../search/NewsSearch";
 import CategorySearch from "../search/NewsCategories";
 
 const NewsFeedView = ({ news, country, category }) => {
-	//console.log("News feed (NewsFeedView.js):", news);
 	return (
 		news && (
 			<div className="mainContent">

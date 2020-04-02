@@ -1,21 +1,10 @@
 import React from "react";
 
-// TODO: Style:a aktiv länk
-
 const NewsCategories = ({ category }) => {
-	//   Add active class to the current button (highlight it), to make button look "activated""
-	// var btns = document.getElementsByClassName("btn");
-	// for (var i = 0; i < btns.length; i++) {
-	// 	btns[i].addEventListener("click", function() {
-	// 		var current = document.getElementsByClassName("active");
-	// 		current[0].className = current[0].className.replace(" active", "");
-	// 		this.className += " active";
-	// 	});
-
 	const categories = [
+		"all",
 		"business",
 		"entertainment",
-		"general",
 		"health",
 		"science",
 		"sports",
