@@ -63,7 +63,7 @@ class NewsModel {
   }
 
   handleQuery(query) {
-    return fetch(`http://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`)
+    return fetch(`https://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`)
       .then(this.handleHTTPError)
       .then(response => response.json())
       .catch(console.error);
@@ -86,11 +86,11 @@ class NewsModel {
     var url = "";
 
     type === "everything" //to handle change between "everything" or "top-headlines"
-      ? (url = `http://newsapi.org/v2/${type}?q=${searchString}&apiKey=${
+      ? (url = `https://newsapi.org/v2/${type}?q=${searchString}&apiKey=${
           apiConfig().API_KEY
         }`)
       : (url =
-          `http://newsapi.org/v2/${type}?` +
+          `https://newsapi.org/v2/${type}?` +
           `country=${country}&q=corona` +
           `apiKey=${apiConfig().API_KEY}`);
 
