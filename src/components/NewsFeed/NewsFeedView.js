@@ -1,7 +1,7 @@
 import React from "react";
 import ArticleDisplay from "../articleDisplay/ArticleDisplay";
-import CountrySearch from "../search/NewsSearch";
-import CategorySearch from "../search/NewsCategories";
+import CountrySearch from "../search/NewsCountry";
+import CategorySearch from "../search/NewsCategory";
 
 const NewsFeedView = ({ news, country, category }) => {
 	return (

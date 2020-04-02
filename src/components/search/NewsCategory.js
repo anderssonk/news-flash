@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const NewsCategories = ({ category }) => {
+const NewsCategory = ({ category }) => {
 	useEffect(() => {
 		document.getElementById("all").classList.add("btn-toggle-active");
 	}, []); // left empty means 'only on 1st render'
@@ -41,4 +41,4 @@ const NewsCategories = ({ category }) => {
 	);
 };
 
-export default NewsCategories;
+export default NewsCategory;

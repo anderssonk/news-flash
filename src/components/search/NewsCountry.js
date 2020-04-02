@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewsSearch = ({ country }) => {
+const NewsCountry = ({ country }) => {
 	const countries = {
 		se: "SV",
 		de: "DE",
@@ -33,4 +33,4 @@ const NewsSearch = ({ country }) => {
 	);
 };
 
-export default NewsSearch;
+export default NewsCountry;
