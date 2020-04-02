@@ -24,7 +24,6 @@ const ArticleDisplay = ({ article }) => {
 
 			<p>published at : {article.publishedAt}</p>
 			<Button starred isStarred={isStarred} onClick={starArticle}></Button>
-			{/* <Button type="primary"></Button> */}
 		</div>
 	);
 };
