@@ -5,7 +5,7 @@ const SidebarView = ({ starred, remove }) => {
 		return starredArray.map(article => (
 			<div className="starredDisplay" key={article.url}>
 				<div id="starredTitle">{article.title}</div>
-				<a href="article.url">
+				<a href={article.url} target="_blank" rel="noopener noreferrer">
 					<div id="starredSource">{article.source.name}</div>
 				</a>
 				<button onClick={() => remove(article.url)}>X</button>
@@ -15,7 +15,8 @@ const SidebarView = ({ starred, remove }) => {
 
 	return (
 		<div>
-			<h4>STARRED ARTICLES</h4>
+			<h4>Starred Articles</h4>
+			<div className="horisontal-line"></div>
 			{starred ? starredDisplay(starred) : "no starred articles"}
 		</div>
 	);

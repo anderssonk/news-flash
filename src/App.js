@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import NewsFeed from "./components/NewsFeed/NewsFeed";
+import "./typography.css";
+import NewsFeed from "./components/newsFeed/NewsFeed";
 import ModelContextProvider from "./NewsContext";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/sidebar/Sidebar";
+import Header from "./components/header";
 
 function App() {
-  return (
-    <div className="container">
-      <ModelContextProvider>
-        <NewsFeed />
-        <Sidebar />
-      </ModelContextProvider>
-    </div>
-  );
+	return (
+		<div className="container">
+			<Header></Header>
+			<body className="App">
+				<ModelContextProvider>
+					<NewsFeed />
+					<Sidebar />
+				</ModelContextProvider>
+			</body>
+		</div>
+	);
 }
 
 export default App;

@@ -1,6 +1,6 @@
 import React from "react";
-import ArticleDisplay from "../ArticleDisplay/ArticleDisplay";
-import CountrySearch from "../search/NewsSearch"; // Drop down:en
+import ArticleDisplay from "../articleDisplay/ArticleDisplay";
+import CountrySearch from "../search/NewsSearch";
 import CategorySearch from "../search/NewsCategories";
 
 const NewsFeedView = ({ news, country, category }) => {
@@ -8,10 +8,9 @@ const NewsFeedView = ({ news, country, category }) => {
 	return (
 		news && (
 			<div className="mainContent">
-				<h3>NewsFeedView</h3>
 				<div className="search-container">
-					<CountrySearch country={country} />
 					<CategorySearch category={category} />
+					<CountrySearch country={country} />
 				</div>
 				<div className="generated-news">
 					{news.map(article => (
