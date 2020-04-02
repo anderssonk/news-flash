@@ -12,8 +12,8 @@ const NewsFeedView = ({ news, country, category }) => {
 					<CountrySearch country={country} />
 				</div>
 				<div className="generated-news">
-					{news.map(article => (
-						<ArticleDisplay article={article} />
+					{news.map((article, index) => (
+						<ArticleDisplay article={article} key={index} />
 					))}
 				</div>
 			</div>

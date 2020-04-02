@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const NewsCategories = ({ category }) => {
+	useEffect(() => {
+		document.getElementById("all").classList.add("btn-toggle-active");
+	}, []); // left empty means 'only on 1st render'
+
 	const categories = [
 		"all",
 		"business",
@@ -20,12 +24,16 @@ const NewsCategories = ({ category }) => {
 		option.target.classList.add("btn-toggle-active");
 	};
 
-	//___________________________________
-
 	return (
 		<div id="categories">
-			{categories.map(cat => (
-				<button className="btn-toggle" value={cat} onClick={handleClick}>
+			{categories.map((cat, index) => (
+				<button
+					className="btn-toggle"
+					value={cat}
+					id={cat}
+					key={index}
+					onClick={handleClick}
+				>
 					{cat}
 				</button>
 			))}
