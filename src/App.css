@@ -39,8 +39,7 @@
 }
 
 .search-container {
-	height: 10vh;
-	padding: 10px;
+	/* padding: 10px; */
 }
 
 .generated-news {
@@ -124,10 +123,6 @@
 	width: 90%;
 	margin: auto;
 	border-top: 4px solid rgba(90, 143, 199, 0.521);
-}
-
-.dropdown select {
-	display: none; /*hide original SELECT element:*/
 }
 
 .dropdown {
