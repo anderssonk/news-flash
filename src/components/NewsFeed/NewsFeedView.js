@@ -1,10 +1,9 @@
 import React from "react";
 import ArticleDisplay from "../articleDisplay/ArticleDisplay";
-import CountrySearch from "../search/NewsSearch";
-import CategorySearch from "../search/NewsCategories";
+import CountrySearch from "../search/NewsCountry";
+import CategorySearch from "../search/NewsCategory";
 
 const NewsFeedView = ({ news, country, category }) => {
-	//console.log("News feed (NewsFeedView.js):", news);
 	return (
 		news && (
 			<div className="mainContent">
@@ -13,8 +12,8 @@ const NewsFeedView = ({ news, country, category }) => {
 					<CountrySearch country={country} />
 				</div>
 				<div className="generated-news">
-					{news.map(article => (
-						<ArticleDisplay article={article} />
+					{news.map((article, index) => (
+						<ArticleDisplay article={article} key={index} />
 					))}
 				</div>
 			</div>

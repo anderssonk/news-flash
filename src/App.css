@@ -39,8 +39,7 @@
 }
 
 .search-container {
-	height: 10vh;
-	padding: 10px;
+	/* padding: 10px; */
 }
 
 .generated-news {
@@ -100,6 +99,7 @@
 	border: none;
 	outline: none;
 	width: 7rem;
+	height: 2.8rem;
 	padding: 4px 2px 4px 2px;
 	background-color: #2b2b2b;
 	color: white;
@@ -123,4 +123,19 @@
 	width: 90%;
 	margin: auto;
 	border-top: 4px solid rgba(90, 143, 199, 0.521);
+}
+
+.dropdown {
+	border: none;
+	cursor: pointer;
+	height: 2.8rem;
+	width: 3rem;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #2b2b2b;
+	background: #fafafa;
+}
+
+.dropdown:hover {
+	color: #2773c6;
 }
