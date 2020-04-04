@@ -1,141 +1,141 @@
 .container {
-	height: 100vh;
-	width: 100vw;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 3rem 1fr 3rem;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 1fr 3rem;
 }
 
 .App {
-	display: grid;
-	background-color: #eeeeee;
-	grid-template-columns: repeat(12, 1fr);
-	overflow: hidden;
+  display: grid;
+  background-color: #eeeeee;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
 }
 
 .header {
-	background: #fff;
-	border-bottom: 5px solid #2b2b2b;
-	padding: 0 1rem 0 1rem;
-	transition: all 0.15s linear;
+  background: #fff;
+  border-bottom: 5px solid #2b2b2b;
+  padding: 0 1rem 0 1rem;
+  transition: all 0.15s linear;
 }
 
 .header.active {
-	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
 }
 
 .mainContent {
-	overflow-y: scroll;
-	grid-column: 2/10;
-	background-color: #fff;
-	display: grid;
-	grid-template-rows: repeat(2);
+  overflow-y: scroll;
+  grid-column: 2/10;
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: repeat(2);
 }
 
 .sideBar {
-	grid-column: 10/12;
-	background-color: #fff;
-	border-left: 1px solid #eee;
+  grid-column: 10/12;
+  background-color: #fff;
+  border-left: 1px solid #eee;
 }
 
 .search-container {
-	/* padding: 10px; */
+  /* padding: 10px; */
 }
 
 .generated-news {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #categories {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	height: 2.5rem;
-	background-color: #2b2b2b;
-	grid-template-rows: 1/1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 2.5rem;
+  background-color: #2b2b2b;
+  grid-template-rows: 1/1;
 }
 
 .articleDisplay {
-	min-width: fit-content;
-	background-color: rgb(250, 250, 250);
-	margin: 10px;
-	border-bottom: 5px solid #eee;
+  min-width: fit-content;
+  background-color: rgb(250, 250, 250);
+  margin: 10px;
+  border-bottom: 5px solid #eee;
 }
 
 .articleDisplay img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .img-container {
-	background-color: #666;
+  background-color: #666;
 }
 
 .starredDisplay {
-	background: #f8f8f8;
-	border-bottom: medium solid #eeeeee;
-	margin: 10px;
-	padding: 10px;
+  background: #f8f8f8;
+  border-bottom: medium solid #eeeeee;
+  margin: 10px;
+  padding: 10px;
 }
 
 #starredSource {
-	border-radius: 2px;
-	font-style: italic;
+  border-radius: 2px;
+  font-style: italic;
 }
 
 #starredTitle {
-	color: #2773c6;
-	font-weight: bold;
-	word-wrap: break-word;
+  color: #2773c6;
+  font-weight: bold;
+  word-wrap: break-word;
 }
 
 #starredTitle:hover {
-	color: #235c99;
+  color: #235c99;
 }
 
 /* Category buttons */
 .btn-toggle {
-	flex-grow: 1;
-	border: none;
-	outline: none;
-	width: 7rem;
-	height: 2.8rem;
-	padding: 4px 2px 4px 2px;
-	background-color: #2b2b2b;
-	color: white;
-	cursor: pointer;
-	font-size: 1rem;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  width: 7rem;
+  height: 2.8rem;
+  padding: 4px 2px 4px 2px;
+  background-color: #2b2b2b;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 /* Style the active class, and buttons on mouse-over */
 .btn-toggle-active,
 .btn-toggle:hover {
-	background-color: rgb(250, 250, 250);
-	border-top: 4px solid rgba(90, 143, 199, 0.521);
-	color: #2b2b2b;
+  background-color: rgb(250, 250, 250);
+  border-top: 4px solid rgba(90, 143, 199, 0.521);
+  color: #2b2b2b;
 }
 
 .btn-toggle-active {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .horisontal-line {
-	width: 90%;
-	margin: auto;
-	border-top: 4px solid rgba(90, 143, 199, 0.521);
+  width: 90%;
+  margin: auto;
+  border-top: 4px solid rgba(90, 143, 199, 0.521);
 }
 
 .dropdown {
-	border: none;
-	cursor: pointer;
-	height: 2.8rem;
-	width: 3rem;
-	font-size: 1rem;
-	font-weight: 600;
-	color: #2b2b2b;
-	background: #fafafa;
+  border: none;
+  cursor: pointer;
+  height: 2.8rem;
+  width: 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  background: #fafafa;
 }
 
 .dropdown:hover {
-	color: #2773c6;
+  color: #2773c6;
 }

@@ -9,6 +9,7 @@
     "firebase": "^7.11.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-loading-skeleton-placeholders": "^1.2.1",
     "react-scripts": "3.4.0"
   },
   "scripts": {
