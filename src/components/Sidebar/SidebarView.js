@@ -1,14 +1,6 @@
 import React from "react";
 
 const SidebarView = ({ starred, remove }) => {
-  const hideOrShow = () => {
-    var x = document.getElementById("starredDisplayList");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  };
   const starredDisplay = starredArray => {
     return starredArray.map(article => (
       <div className="starredDisplay" key={article.url}>
@@ -24,14 +16,10 @@ const SidebarView = ({ starred, remove }) => {
   return (
     <div>
       <h4>Starred Articles</h4>
-      <button onClick={hideOrShow}>
-        <i class="material-icons">arrow_drop_down</i>
-      </button>
-      <div id="starredDisplayList">
-        <div className="horisontal-line"></div>
 
-        {starred ? starredDisplay(starred) : "no starred articles"}
-      </div>
+      <div className="horisontal-line"></div>
+
+      {starred ? starredDisplay(starred) : "no starred articles"}
     </div>
   );
 };
