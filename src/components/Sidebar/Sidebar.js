@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import SidebarView from "./SidebarView";
 import { ModelContext } from "../../NewsContext";
-import useObserver from "../hooks/useObserver";
+import useObserver from "../../hooks/useObserver";
 
 const Sidebar = () => {
 	const { model } = useContext(ModelContext);

@@ -8,15 +8,15 @@ import Header from "./components/Header";
 
 function App() {
 	return (
-		<div className="container">
+		<body className="container">
 			<Header></Header>
-			<body className="App">
+			<div className="App">
 				<ModelContextProvider>
 					<NewsFeed />
 					<Sidebar />
 				</ModelContextProvider>
-			</body>
-		</div>
+			</div>
+		</body>
 	);
 }
 
