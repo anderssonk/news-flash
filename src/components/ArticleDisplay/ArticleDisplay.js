@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ModelContext } from "../../NewsContext";
-import useObserver from "../hooks/useObserver";
+import useObserver from "../../hooks/useObserver";
 
 import Button from "../button/Button";
 
