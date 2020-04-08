@@ -1,5 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ModelContext } from "../../NewsContext";
+import useObserver from "../hooks/useObserver";
+
 import Button from "../button/Button";
 
 const ArticleDisplay = ({ article }) => {
@@ -10,6 +12,14 @@ const ArticleDisplay = ({ article }) => {
 		model.addToStarred(article.url);
 		console.log("1234");
 	};
+
+	const starredArray = useObserver("starred", model);
+
+	useEffect(() => {
+		setisStarred(
+			model.starred.filter((item) => item.url === article.url).length > 0
+		);
+	}, [starredArray]);
 
 	return (
 		<div key={article.url} className="articleDisplay">
