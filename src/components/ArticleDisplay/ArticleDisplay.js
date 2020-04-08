@@ -7,13 +7,15 @@ import Button from "../button/Button";
 const ArticleDisplay = ({ article }) => {
 	const [isStarred, setisStarred] = useState(false);
 	const { model } = useContext(ModelContext);
+	const starredArray = useObserver("starred", model);
+
 	const starArticle = () => {
-		setisStarred(true);
-		model.addToStarred(article.url);
+		isStarred
+			? model.removeFromStarred(article.url)
+			: model.addToStarred(article.url);
+		setisStarred(!isStarred);
 		console.log("1234");
 	};
-
-	const starredArray = useObserver("starred", model);
 
 	useEffect(() => {
 		setisStarred(

@@ -12,12 +12,12 @@ const NewsCategory = ({ category }) => {
 		"health",
 		"science",
 		"sports",
-		"technology"
+		"technology",
 	];
 
-	const handleClick = option => {
+	const handleClick = (option) => {
 		const buttons = [...document.getElementById("categories").children];
-		buttons.forEach(element => {
+		buttons.forEach((element) => {
 			element.classList.remove("btn-toggle-active");
 		});
 		category(option.target.value);
