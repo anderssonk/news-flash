@@ -2,22 +2,13 @@ import React from "react";
 
 import "./skeletonstyle.css";
 import "../../App.css";
-import ArticleDisplay from "../articledisplay/ArticleDisplay";
 
-// background-repeat:repeat-y eller repeat-x
+const skeletonRepeats = Array(9).fill(0);
 
 const Skeleton = () => {
-  return (
-    <div className="mainContent">
-      <div className="generated-news">
-        <div className="skeletonDisplay articleDisplay"></div>
-        <div className="skeletonDisplay articleDisplay"></div>
-        <div className="skeletonDisplay articleDisplay"></div>
-        <div className="skeletonDisplay articleDisplay"></div>
-        <div className="skeletonDisplay articleDisplay"></div>
-      </div>
-    </div>
-  );
+  return skeletonRepeats.map((index) => (
+    <div className="skeletonDisplay articleDisplay"></div>
+  ));
 };
 
 export default Skeleton;

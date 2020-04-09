@@ -3,8 +3,6 @@ import NewsFeedView from "./NewsFeedView";
 
 import { ModelContext } from "../../NewsContext";
 
-import Skeleton from "../skeleton/skeleton";
-
 const NewsFeed = () => {
   const { model } = useContext(ModelContext);
   const [searchResultState, setSearchResultState] = useState(null);
@@ -28,9 +26,7 @@ const NewsFeed = () => {
     });
   };
 
-  return isLoading ? (
-    <Skeleton />
-  ) : (
+  return (
     <NewsFeedView
       news={searchResultState}
       country={(countrycode) => setCountryState(countrycode)}
