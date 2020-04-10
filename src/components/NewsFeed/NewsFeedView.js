@@ -2,7 +2,7 @@ import React from "react";
 import ArticleDisplay from "../articledisplay/ArticleDisplay";
 import CountrySearch from "../search/NewsCountry";
 import CategorySearch from "../search/NewsCategory";
-import Skeleton from "../skeleton/skeleton";
+import Skeletons from "../skeletons/skeletons";
 
 const NewsFeedView = ({ news, country, category }) => {
   return news ? (
@@ -20,7 +20,7 @@ const NewsFeedView = ({ news, country, category }) => {
   ) : (
     <div className="mainContent">
       <div className="generated-news">
-        <Skeleton />
+        <Skeletons />
       </div>
     </div>
   );

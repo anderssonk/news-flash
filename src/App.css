@@ -57,11 +57,10 @@
 }
 
 .articleDisplay {
-  min-width: fit-content;
+  /* min-width: fit-content; */
   background-color: rgb(250, 250, 250);
   margin: 10px;
   border-bottom: 5px solid #eee;
-  background-repeat: repeat;
 }
 
 .articleDisplay img {
