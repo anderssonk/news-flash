@@ -27,7 +27,7 @@ const Sidebar = () => {
       x.classList.remove("hide");
       icon.textContent = "arrow_drop_down";
       btn.style.color = "dodgerblue";
-      btn.style.backgroundColor = "lightblue";
+      btn.style.backgroundColor = "rgb(169, 197, 226)";
     } else {
       x.classList.add("hide");
       icon.textContent = "arrow_drop_up";
