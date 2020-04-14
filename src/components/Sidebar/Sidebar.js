@@ -41,12 +41,16 @@ const Sidebar = () => {
       <div id="sideBar">
         <SidebarView
           starred={starredArray}
-          remove={url => model.removeFromStarred(url)}
+          remove={(url) => model.removeFromStarred(url)}
         />
       </div>
       <button id="hide-button" onClick={hideOrShow}>
         <i id="change-btn-icon" class="material-icons">
           arrow_drop_down
+        </i>
+
+        <i id="change-btn-icon" class="material-icons">
+          view_headline
         </i>
       </button>
     </div>
