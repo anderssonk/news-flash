@@ -45,7 +45,7 @@ const Sidebar = () => {
         />
       </div>
       <button id="hide-button" onClick={hideOrShow}>
-        <i id="change-btn-icon" class="material-icons">
+        <i id="change-btn-icon" className="material-icons">
           arrow_drop_down
         </i>
 
