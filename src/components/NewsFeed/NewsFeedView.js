@@ -13,7 +13,7 @@ const NewsFeedView = ({ news, country, category }) => {
 				</div>
 				<div className="generated-news">
 					{news.map((article, index) => (
-						<ArticleDisplay article={article} key={index} />
+						<ArticleDisplay article={article} key={article.url} />
 					))}
 				</div>
 			</div>

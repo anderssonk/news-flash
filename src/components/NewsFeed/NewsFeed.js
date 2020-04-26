@@ -19,9 +19,9 @@ const NewsFeed = () => {
 
 	const updateSearchResults = () => {
 		setIsLoading(true);
-		model.searchNews(typeState, countryState, categoryState).then(data => {
+		model.searchNews(typeState, countryState, categoryState).then((data) => {
 			setSearchResultState(data);
-			data.map(article => model.addToFeed(article));
+			data.map((article) => model.addToFeed(article));
 			setIsLoading(false);
 		});
 	};
@@ -29,8 +29,8 @@ const NewsFeed = () => {
 	return (
 		<NewsFeedView
 			news={searchResultState}
-			country={countrycode => setCountryState(countrycode)}
-			category={categoryState => {
+			country={(countrycode) => setCountryState(countrycode)}
+			category={(categoryState) => {
 				setCategoryState(categoryState === "all" ? "general" : categoryState);
 			}}
 		/>

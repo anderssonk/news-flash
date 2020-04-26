@@ -1,15 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ModelContext } from "../../NewsContext";
+import useObserver from "../../hooks/useObserver";
+
 import Button from "../button/Button";
 
 const ArticleDisplay = ({ article }) => {
 	const [isStarred, setisStarred] = useState(false);
 	const { model } = useContext(ModelContext);
+	const starredArray = useObserver("starred", model);
+
 	const starArticle = () => {
-		setisStarred(true);
-		model.addToStarred(article.url);
+		isStarred
+			? model.removeFromStarred(article.url)
+			: model.addToStarred(article.url);
+		setisStarred(!isStarred);
 		console.log("1234");
 	};
+
+	useEffect(() => {
+		setisStarred(
+			model.starred.filter((item) => item.url === article.url).length > 0
+		);
+	}, [starredArray]);
 
 	return (
 		<div key={article.url} className="articleDisplay">
