@@ -55,9 +55,12 @@ class NewsModel {
 	}
 
 	removeFromStarred(url) {
-		// const currentStarred = this.starred
 		this.starred = this.starred.filter((news) => news.url !== url);
 		this.notifyObservers({ removed: this.starred });
+	}
+
+	addComment(article, comment) {
+		article.comment = comment;
 	}
 
 	handleQuery(query) {

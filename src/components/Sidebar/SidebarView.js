@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./../button/Button";
 
-const SidebarView = ({ starred, remove, commentPrompt }) => {
+const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
 	const starredDisplay = (starredArray) => {
 		return starredArray.map((article) => (
 			<div className="starredDisplay" key={article.url}>
@@ -12,9 +12,18 @@ const SidebarView = ({ starred, remove, commentPrompt }) => {
 				<Button type="primary" onClick={() => remove(article.url)}>
 					X
 				</Button>
-				<Button type="primary" onClick={() => commentPrompt(article.url)}>
-					Add comment
+
+				<Button
+					type="primary"
+					onClick={() => {
+						commentPrompt(article);
+						forceUpdate(); // forces component update, as useObserver doesn't listen to props changing in object
+					}}
+				>
+					{!article.comment ? "Add comment" : "Change comment"}
 				</Button>
+
+				{article.comment && <div>{article.comment}</div>}
 			</div>
 		));
 	};
