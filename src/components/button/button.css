@@ -1,11 +1,13 @@
 .btn {
 	border-color: transparent;
 	height: 1.8rem;
-	min-width: 4rem;
+	min-width: 2rem;
+	margin: 2px;
 }
 
 .btn-primary {
-	background: #1d70b8;
+	background: #c6d0d8;
+	color: black;
 }
 
 .btn-primary:hover {
