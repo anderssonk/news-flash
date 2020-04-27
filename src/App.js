@@ -1,39 +1,25 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./typography.css";
-//import NewsFeed from "./components/newsFeed/NewsFeed";
-//import ModelContextProvider from "./NewsContext";
-//import Sidebar from "./components/sidebar/Sidebar";
-//import Header from "./components/Header";
-import firebase from "firebase";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import NewsFeed from "./components/newsfeed/NewsFeed";
+import ModelContextProvider from "./NewsContext";
+import Sidebar from "./components/sidebar/Sidebar";
+import Header from "./components/header.js";
+import Login from "./components/login/login";
 
 function App() {
-	const [isSignedIn, setIsSignedIn] = useState(false)
-	const uiConfig = {
-		signInFlow: "popup",
-		signInOptions: [
-		  firebase.auth.GoogleAuthProvider.PROVIDER_ID
-		], callbacks : {
-		  signInSuccess: () => false
-		}
-	  }
-	return (
-		<div className="container">
-			<div className="App">
-				{isSignedIn ? 
-				<p>Signed in!</p>
-				:
-				<p>Not signed in!</p>
-				}	
-			</div>
-		</div>
-	);
+  return (
+    <div className="container">
+      <div className="App">
+        <ModelContextProvider>
+          <Header />
+          <Login />
+          <NewsFeed />
+          <Sidebar />
+        </ModelContextProvider>
+      </div>
+    </div>
+  );
 }
 
 export default App;
-
-// <ModelContextProvider>
-//<NewsFeed />
-					//<Sidebar />
-				//</ModelContextProvider>
