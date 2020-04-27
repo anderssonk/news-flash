@@ -12,7 +12,7 @@ const SidebarView = ({ starred, remove, commentPrompt }) => {
 				<Button type="primary" onClick={() => remove(article.url)}>
 					X
 				</Button>
-				<Button type="primary" onClick={() => commentPrompt()}>
+				<Button type="primary" onClick={() => commentPrompt(article.url)}>
 					Add comment
 				</Button>
 			</div>
