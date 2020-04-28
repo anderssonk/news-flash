@@ -6,6 +6,7 @@ import ModelContextProvider from "./NewsContext";
 import Sidebar from "./components/sidebar/Sidebar";
 import Header from "./components/header.js";
 import Login from "./components/login/login";
+import Database from "./components/database/dataBase";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <NewsFeed />
           <Sidebar />
         </ModelContextProvider>
+        <Database />
       </div>
     </div>
   );

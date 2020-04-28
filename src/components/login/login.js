@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./login.css";
 // import "./typography.css";
-import firebase from "firebase";
+import firebase from "../../util/firebaseConfig";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-firebase.initializeApp({
-  apiKey: "AIzaSyAG-FLhyeAjBajQpPqfH7SzCdu49V6_SbY",
-  authDomain: "newsflash-8e21c.firebaseapp.com",
-});
+// firebase.initializeApp({
+//   apiKey: "AIzaSyAG-FLhyeAjBajQpPqfH7SzCdu49V6_SbY",
+//   authDomain: "newsflash-8e21c.firebaseapp.com",
+// });
 function Login() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const uiConfig = {
