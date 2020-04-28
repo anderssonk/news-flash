@@ -3,8 +3,11 @@ import React from "react";
 import firebase from "../../util/firebaseConfig";
 
 const dataBase = () => {
+  // const renderArticle = (doc) =>{
+  //   let
+  // }
   const db = firebase.firestore();
-  db.settings({ timestampsInSnapshots: true });
+  // db.settings({ timestampsInSnapshots: true }); //no need to
   db.collection("users")
     .get()
     .then((snapshot) => {

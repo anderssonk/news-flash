@@ -1,106 +1,116 @@
 import apiConfig from "./util/apiConfig";
 
 class NewsModel {
-	constructor() {
-		this.starred = [];
-		this.feed = [];
-		this.subscribers = [];
-	}
-	addObserver(callback) {
-		console.log("NewsModel: addObserver: ", callback);
-		this.callback = callback;
-		this.subscribers.push(callback);
-	}
-	notifyObservers(whatHappened) {
-		//calls what's in subscribers list
-		console.log("NewsModel: notifyObservers: ", whatHappened);
-		this.subscribers.forEach((callback) => callback(whatHappened));
-	}
+  constructor() {
+    this.user = null;
+    this.starred = [];
+    this.feed = [];
+    this.subscribers = [];
+  }
+  retrieveUserInfo() {
+    return this.user;
+  }
 
-	removeObserver(observer) {
-		this.subscribers = this.subscribers.filter((each) => observer !== each);
-	}
+  assignUser(user) {
+    this.user = user;
+    console.log("assigned user:", user);
+  }
 
-	addToFeed(article) {
-		if (!this.feed.filter((item) => item.url === article.url).length > 0) {
-			this.feed = [...this.feed, article];
-		}
-	}
+  addObserver(callback) {
+    console.log("NewsModel: addObserver: ", callback);
+    this.callback = callback;
+    this.subscribers.push(callback);
+  }
+  notifyObservers(whatHappened) {
+    //calls what's in subscribers list
+    console.log("NewsModel: notifyObservers: ", whatHappened);
+    this.subscribers.forEach((callback) => callback(whatHappened));
+  }
 
-	addToMenu(dish) {
-		// debugger;
-		if (!this.dishes.filter((e) => e.id === dish.id).length > 0) {
-			this.addTypeToDish(dish);
-			this.dishes = [...this.dishes, dish]; // spread is an immutable object - creates new array
-			this.notifyObservers({ add_dish: dish });
-		}
-	}
+  removeObserver(observer) {
+    this.subscribers = this.subscribers.filter((each) => observer !== each);
+  }
 
-	getStarred() {
-		return this.starred;
-	}
-	getFeed() {
-		return this.feed;
-	}
+  addToFeed(article) {
+    if (!this.feed.filter((item) => item.url === article.url).length > 0) {
+      this.feed = [...this.feed, article];
+    }
+  }
 
-	addToStarred(url) {
-		if (!this.starred.filter((article) => article.url === url).length > 0) {
-			// om url inte redan är i starred
-			const addedNews = this.feed.filter((article) => article.url === url); //
-			this.starred = this.starred.concat(addedNews); // lägg till artikeln med den url:en
-			this.notifyObservers({ upd_starred: this.starred });
-		} else {
-			console.log(url, " has already been starred.");
-		}
-	}
+  addToMenu(dish) {
+    // debugger;
+    if (!this.dishes.filter((e) => e.id === dish.id).length > 0) {
+      this.addTypeToDish(dish);
+      this.dishes = [...this.dishes, dish]; // spread is an immutable object - creates new array
+      this.notifyObservers({ add_dish: dish });
+    }
+  }
 
-	removeFromStarred(url) {
-		// const currentStarred = this.starred
-		this.starred = this.starred.filter((news) => news.url !== url);
-		this.notifyObservers({ removed: this.starred });
-	}
+  getStarred() {
+    return this.starred;
+  }
+  getFeed() {
+    return this.feed;
+  }
 
-	handleQuery(query) {
-		return fetch(
-			`https://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`
-		)
-			.then(this.handleHTTPError)
-			.then((response) => response.json())
-			.catch(console.error);
-	}
+  addToStarred(url) {
+    if (!this.starred.filter((article) => article.url === url).length > 0) {
+      // om url inte redan är i starred
+      const addedNews = this.feed.filter((article) => article.url === url); //
+      this.starred = this.starred.concat(addedNews); // lägg till artikeln med den url:en
+      this.notifyObservers({ upd_starred: this.starred });
+    } else {
+      console.log(url, " has already been starred.");
+    }
+  }
 
-	handleHTTPError(response) {
-		if (response.ok) return response;
-		throw Error(response.statusText); // otherwise logs an error
-	}
+  removeFromStarred(url) {
+    // const currentStarred = this.starred
+    this.starred = this.starred.filter((news) => news.url !== url);
+    this.notifyObservers({ removed: this.starred });
+  }
 
-	searchNews(type, country = "se", category = "") {
-		let x = this.handleQuery(`${type}?country=${country}&category=${category}`);
-		return x.then((data) => data.articles);
-	}
+  handleQuery(query) {
+    return fetch(
+      `https://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`
+    )
+      .then(this.handleHTTPError)
+      .then((response) => response.json())
+      .catch(console.error);
+  }
 
-	getDataFromAPITopHeadlines(type, country = "se", searchString) {
-		//arguments used to change type of API call, type ="everything" uses searchString="some search string ", type="top-headlines" uses country="us,uk,se etc..."
-		//returns a promise
+  handleHTTPError(response) {
+    if (response.ok) return response;
+    throw Error(response.statusText); // otherwise logs an error
+  }
 
-		var url = "";
+  searchNews(type, country = "se", category = "") {
+    let x = this.handleQuery(`${type}?country=${country}&category=${category}`);
+    return x.then((data) => data.articles);
+  }
 
-		type === "everything" //to handle change between "everything" or "top-headlines"
-			? (url = `https://newsapi.org/v2/${type}?q=${searchString}&apiKey=${
-					apiConfig().API_KEY
-			  }`)
-			: (url =
-					`https://newsapi.org/v2/${type}?` +
-					`country=${country}&q=corona` +
-					`apiKey=${apiConfig().API_KEY}`);
+  getDataFromAPITopHeadlines(type, country = "se", searchString) {
+    //arguments used to change type of API call, type ="everything" uses searchString="some search string ", type="top-headlines" uses country="us,uk,se etc..."
+    //returns a promise
 
-		var req = new Request(url);
+    var url = "";
 
-		return fetch(req)
-			.then(this.handleHTTPError)
-			.then((response) => response.json())
-			.catch(console.error);
-	}
+    type === "everything" //to handle change between "everything" or "top-headlines"
+      ? (url = `https://newsapi.org/v2/${type}?q=${searchString}&apiKey=${
+          apiConfig().API_KEY
+        }`)
+      : (url =
+          `https://newsapi.org/v2/${type}?` +
+          `country=${country}&q=corona` +
+          `apiKey=${apiConfig().API_KEY}`);
+
+    var req = new Request(url);
+
+    return fetch(req)
+      .then(this.handleHTTPError)
+      .then((response) => response.json())
+      .catch(console.error);
+  }
 }
 
 export default new NewsModel();

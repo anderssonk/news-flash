@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./login.css";
 // import "./typography.css";
 import firebase from "../../util/firebaseConfig";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { ModelContext } from "../../NewsContext";
 
 // firebase.initializeApp({
 //   apiKey: "AIzaSyAG-FLhyeAjBajQpPqfH7SzCdu49V6_SbY",
 //   authDomain: "newsflash-8e21c.firebaseapp.com",
 // });
 function Login() {
+  const { model } = useContext(ModelContext);
+
   const [isSignedIn, setIsSignedIn] = useState(false);
   const uiConfig = {
     signInFlow: "popup",
@@ -20,10 +23,11 @@ function Login() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      model.assignUser(user); //assigns the user in the model
       console.log("user", user);
-      setIsSignedIn(!!user);
+      setIsSignedIn(!!user); // !!
     });
-  });
+  }, []);
   return (
     <div className="login">
       {isSignedIn ? (

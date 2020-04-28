@@ -1,5 +1,5 @@
 .login {
-  grid-column: 10 / span 2;
+  /* grid-column: 10 / span 2; */
 }
 .loggedIn {
   display: grid;

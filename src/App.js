@@ -11,9 +11,9 @@ import Database from "./components/database/dataBase";
 function App() {
   return (
     <div className="container">
+      <Header />
       <div className="App">
         <ModelContextProvider>
-          <Header />
           <Login />
           <NewsFeed />
           <Sidebar />
