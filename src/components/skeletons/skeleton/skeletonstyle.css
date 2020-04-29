@@ -1,19 +1,7 @@
-/* .skeletonDisplay:empty { */
-
-/* background-image: linear-gradient(#ccc 100%, transparent), */
-/* linear-gradient(rgb(11, 161, 61), rgb(11, 161, 61)), */
-/* linear-gradient(rgb(209, 9, 9), rgb(224, 28, 28)), */
-/* linear-gradient(#eee133, #f5e50c); */
-/* background-size: 48px 48px, 190px 40px, 190px 20px, 100% 100%; */
-
-/* background-position: 50% 24px, 15px 140px, 15px 200px, 0 0; */
-/* background-repeat: no-repeat; */
-/* } */
-
 .skeletonDisplay:empty {
   min-height: 50vh;
   max-width: 30vw;
-  /* min-width: 150px; */
+  margin: 7px;
 
   background-image: linear-gradient(lightgray 99%, transparent 0),
     linear-gradient(
@@ -26,11 +14,11 @@
     linear-gradient(lightgray 20px, transparent 0),
     linear-gradient(lightgray 20px, transparent 0);
 
-  background-size: 100% 50%, /* circle */ 90% 10%, /* highlight */ 90% 15%,
-    20% 10%, 70% 10%;
+  background-size: 100% 50%, /* image(big square) */ 90% 10%,
+    /* highlight */ 90% 15%, 20% 10%, 70% 10%;
 
-  background-position: center top /*circle*/, 0 0 /*highlight*/, 0 60%, 0 70%,
-    0 85%;
+  background-position: center top /*image(big square)*/, 0 0 /*highlight*/,
+    0 60%, 0 70%, 0 85%;
 
   background-repeat: no-repeat;
 
@@ -39,13 +27,13 @@
 
 @keyframes shine {
   to {
-    background-position: center top /*circle*/, 0 100% /*highlight*/, 0 60%,
-      0 70%, 0 85%;
+    background-position: center top /*image(big square)*/, 0 100% /*highlight*/,
+      0 60%, 0 70%, 0 85%;
   }
 }
-
-/* .skeletonBackground {
-  background-color: lightsteelblue;
-  max-width: 100%;
-  max-height: 100%;
-} */
+@media screen and (max-width: 650px) {
+  .skeletonDisplay:empty {
+    grid-template-columns: repeat(1, 1fr);
+    min-width: 100vh;
+  }
+}
