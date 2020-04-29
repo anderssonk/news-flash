@@ -5,22 +5,20 @@ import CategorySearch from "../search/NewsCategory";
 import Skeletons from "../skeletons/skeletons";
 
 const NewsFeedView = ({ news, country, category }) => {
-	return news ? (
+	return (
 		<div className="mainContent">
 			<div className="search-container">
 				<CategorySearch category={category} />
 				<CountrySearch country={country} />
 			</div>
 			<div className="generated-news">
-				{news.map((article, index) => (
-					<ArticleDisplay article={article} key={index} />
-				))}
-			</div>
-		</div>
-	) : (
-		<div className="mainContent">
-			<div className="generated-news">
-				<Skeletons />
+				{news ? (
+					news.map((article, index) => (
+						<ArticleDisplay article={article} key={index} />
+					))
+				) : (
+					<Skeletons />
+				)}
 			</div>
 		</div>
 	);
