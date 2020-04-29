@@ -8,15 +8,18 @@ import Header from "./components/header.js";
 
 function App() {
   return (
+
     <body className="container">
       <Header></Header>
       <div className="App">
+
         <ModelContextProvider>
           <NewsFeed />
           <Sidebar />
         </ModelContextProvider>
       </div>
     </body>
+
   );
 }
 

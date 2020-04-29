@@ -1,0 +1,39 @@
+.skeletonDisplay:empty {
+  min-height: 50vh;
+  max-width: 30vw;
+  margin: 7px;
+
+  background-image: linear-gradient(lightgray 99%, transparent 0),
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 80%
+    ),
+    linear-gradient(lightgray 20px, transparent 0),
+    linear-gradient(lightgray 20px, transparent 0),
+    linear-gradient(lightgray 20px, transparent 0);
+
+  background-size: 100% 50%, /* image(big square) */ 90% 10%,
+    /* highlight */ 90% 15%, 20% 10%, 70% 10%;
+
+  background-position: center top /*image(big square)*/, 0 0 /*highlight*/,
+    0 60%, 0 70%, 0 85%;
+
+  background-repeat: no-repeat;
+
+  animation: shine 1s infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: center top /*image(big square)*/, 0 100% /*highlight*/,
+      0 60%, 0 70%, 0 85%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .skeletonDisplay:empty {
+    grid-template-columns: repeat(1, 1fr);
+    min-width: 100vh;
+  }
+}
