@@ -4,19 +4,22 @@ import "./typography.css";
 import NewsFeed from "./components/newsfeed/NewsFeed";
 import ModelContextProvider from "./NewsContext";
 import Sidebar from "./components/sidebar/Sidebar";
-import Header from "./components/header";
+import Header from "./components/header.js";
 
 function App() {
   return (
-    <div className="container">
+
+    <body className="container">
       <Header></Header>
-      <body className="App">
+      <div className="App">
+
         <ModelContextProvider>
           <NewsFeed />
           <Sidebar />
         </ModelContextProvider>
-      </body>
-    </div>
+      </div>
+    </body>
+
   );
 }
 

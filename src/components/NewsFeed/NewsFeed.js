@@ -17,24 +17,24 @@ const NewsFeed = () => {
     updateSearchResults();
   }, [countryState, categoryState]);
 
-  const updateSearchResults = () => {
-    setIsLoading(true);
-    model.searchNews(typeState, countryState, categoryState).then((data) => {
-      setSearchResultState(data);
-      data.map((article) => model.addToFeed(article));
-      setIsLoading(false);
-    });
-  };
+	const updateSearchResults = () => {
+		setIsLoading(true);
+		model.searchNews(typeState, countryState, categoryState).then((data) => {
+			setSearchResultState(data);
+			data.map((article) => model.addToFeed(article));
+			setIsLoading(false);
+		});
+	};
 
-  return (
-    <NewsFeedView
-      news={searchResultState}
-      country={(countrycode) => setCountryState(countrycode)}
-      category={(categoryState) => {
-        setCategoryState(categoryState === "all" ? "general" : categoryState);
-      }}
-    />
-  );
+	return (
+		<NewsFeedView
+			news={searchResultState}
+			country={(countrycode) => setCountryState(countrycode)}
+			category={(categoryState) => {
+				setCategoryState(categoryState === "all" ? "general" : categoryState);
+			}}
+		/>
+	);
 };
 
 export default NewsFeed;
