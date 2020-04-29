@@ -1,8 +1,12 @@
 .btn {
+	font-family: "Benton Sans", sans-serif;
 	border-color: transparent;
-	height: 1.8rem;
-	min-width: 2rem;
 	margin: 2px;
+}
+
+.btn:focus {
+	outline: transparent;
+	color: #00539b;
 }
 
 .btn-primary {
@@ -19,10 +23,12 @@
 }
 
 .btn-tertiary {
-	background-color: red;
+	background-color: transparent;
+	font-weight: 700;
 }
 
 .starred {
+	float: right;
 	border: none;
 	color: #2b2b2b;
 	font-size: 1.8rem;

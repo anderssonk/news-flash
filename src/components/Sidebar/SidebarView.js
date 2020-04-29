@@ -7,14 +7,14 @@ const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
 			<div className="starredDisplay" key={article.url}>
 				<div id="starredTitle">{article.title}</div>
 				<a href={article.url} target="_blank" rel="noopener noreferrer">
-					<div id="starredSource">{article.source.name}</div>
+					<div className="source">{article.source.name}</div>
 				</a>
 				<Button type="primary" onClick={() => remove(article.url)}>
 					X
 				</Button>
 
 				<Button
-					type="primary"
+					type="tertiary"
 					onClick={() => {
 						commentPrompt(article);
 						forceUpdate(); // forces component update, as useObserver doesn't listen to props changing in object

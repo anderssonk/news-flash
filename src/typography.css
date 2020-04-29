@@ -21,7 +21,8 @@ h3 {
 }
 
 h4 {
-	font-size: ;
+	font-size: 1.3rem;
+	margin: 1rem;
 }
 
 .header__title {
@@ -38,4 +39,14 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+.source {
+	text-transform: lowercase;
+}
+
+#starredTitle {
+	color: #2b2b2b;
+	font-weight: bold;
+	word-wrap: break-word;
 }
