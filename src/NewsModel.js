@@ -1,4 +1,5 @@
 import apiConfig from "./util/apiConfig";
+import firebase from "./util/firebaseConfig";
 
 class NewsModel {
   constructor() {
@@ -7,6 +8,7 @@ class NewsModel {
     this.feed = [];
     this.subscribers = [];
   }
+
   retrieveUserInfo() {
     return this.user;
   }
@@ -34,15 +36,6 @@ class NewsModel {
   addToFeed(article) {
     if (!this.feed.filter((item) => item.url === article.url).length > 0) {
       this.feed = [...this.feed, article];
-    }
-  }
-
-  addToMenu(dish) {
-    // debugger;
-    if (!this.dishes.filter((e) => e.id === dish.id).length > 0) {
-      this.addTypeToDish(dish);
-      this.dishes = [...this.dishes, dish]; // spread is an immutable object - creates new array
-      this.notifyObservers({ add_dish: dish });
     }
   }
 
