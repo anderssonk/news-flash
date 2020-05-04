@@ -66,6 +66,41 @@ class NewsModel {
     }
   }
 
+  addToStarredDatabase(article) {
+    const db = firebase.firestore();
+
+    if (this.retrieveUserInfo()) {
+      //if someone is logged in
+      db.collection("users")
+        .doc(this.retrieveUserInfo().uid)
+        .collection("starred_collection")
+        .limit(1)
+        .get()
+        .then((query) => {
+          if (query.size === 0) {
+            console.log("new user");
+            //returns 1 if exist, 0 if it doesn't
+            //starred_collection dont exists and therefore user does not have any article saved.
+            // set new collection
+            db.collection("users")
+              .doc(this.retrieveUserInfo().uid)
+              .collection("starred_collection")
+              .doc(`${article.uniqueID}`)
+              .set({ article });
+          } else {
+            //starred_collection DOES exist and therefore user has articles saved.
+            //update collection with new articles
+            console.log("already existing user");
+
+            db.collection("users")
+              .doc(this.retrieveUserInfo().uid)
+              .collection("starred_collection")
+              .doc(`${article.uniqueID}`)
+              .set({ article });
+          }
+        });
+    }
+  }
   removeFromStarredDataBase(article) {
     const db = firebase.firestore();
 
