@@ -39,6 +39,15 @@ class NewsModel {
     }
   }
 
+  loginSetStarred(array) {
+    this.starred = array;
+    this.notifyObservers({ upd_starred: this.starred });
+  }
+  logoutSetStarred() {
+    this.starred = [];
+    this.notifyObservers({ upd_starred: this.starred });
+  }
+
   getStarred() {
     return this.starred;
   }
@@ -54,6 +63,31 @@ class NewsModel {
       this.notifyObservers({ upd_starred: this.starred });
     } else {
       console.log(url, " has already been starred.");
+    }
+  }
+
+  removeFromStarredDataBase(article) {
+    const db = firebase.firestore();
+
+    if (this.retrieveUserInfo()) {
+      db.collection("users") //removes article document with id
+        .doc(this.retrieveUserInfo().uid)
+        .collection("starred_collection")
+        .doc(`${article.uniqueID}`)
+        .get()
+        .then((doc) => {
+          //if document exists
+          if (doc.exists) {
+            db.collection("users")
+              .doc(this.retrieveUserInfo().uid)
+              .collection("starred_collection")
+              .doc(`${article.uniqueID}`)
+              .delete();
+            console.log("article deleted, id:", article.uniqueID);
+          } else {
+            console.log("article is not deletable");
+          }
+        });
     }
   }
 

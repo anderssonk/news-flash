@@ -13,94 +13,64 @@ const ArticleDisplay = ({ article }) => {
 
   const removeFromStarred = () => {
     model.removeFromStarred(article.url);
-
-    // model.retrieveUserInfo() ? db.collection("users").doc(model.retrieveUserInfo().uid).collection("starred_collection").doc(`${article.uniqueID}`) :
-
-    db.collection("users") //removes article document with id
-      .doc(model.retrieveUserInfo().uid)
-      .collection("starred_collection")
-      .doc(`${article.uniqueID}`)
-      .get()
-      .then((doc) => {
-        //if document exists
-        if (doc.exists) {
-          db.collection("users")
-            .doc(model.retrieveUserInfo().uid)
-            .collection("starred_collection")
-            .doc(`${article.uniqueID}`)
-            .delete();
-        } else {
-          console.log("article is not deletable");
-        }
-      });
+    model.removeFromStarredDataBase(article);
+    // if (model.retrieveUserInfo()) {
+    //   db.collection("users") //removes article document with id
+    //     .doc(model.retrieveUserInfo().uid)
+    //     .collection("starred_collection")
+    //     .doc(`${article.uniqueID}`)
+    //     .get()
+    //     .then((doc) => {
+    //       //if document exists
+    //       if (doc.exists) {
+    //         db.collection("users")
+    //           .doc(model.retrieveUserInfo().uid)
+    //           .collection("starred_collection")
+    //           .doc(`${article.uniqueID}`)
+    //           .delete();
+    //         console.log("deleted");
+    //       } else {
+    //         console.log("article is not deletable");
+    //       }
+    //     });
+    // }
   };
+
   const addingToStarred = () => {
     model.addToStarred(article.url);
     setisStarred(!isStarred);
 
-    db.collection("users")
-      .doc(model.retrieveUserInfo().uid)
-      .collection("starred_collection")
-      .limit(1)
-      .get()
-      .then((query) => {
-        if (query.size === 0) {
-          console.log("new user");
-          //returns 1 if exist, 0 if it doesn't
-          //starred_collection dont exists and therefore user does not have any article saved.
-          // set new collection
-          db.collection("users")
-            .doc(model.retrieveUserInfo().uid)
-            .collection("starred_collection")
-            .doc(`${article.uniqueID}`)
-            .set({ article });
-        } else {
-          //starred_collection DOES exist and therefore user has articles saved.
-          //update collection with new articles
-          console.log("already existing user");
+    if (model.retrieveUserInfo()) {
+      //if someone is logged in
+      db.collection("users")
+        .doc(model.retrieveUserInfo().uid)
+        .collection("starred_collection")
+        .limit(1)
+        .get()
+        .then((query) => {
+          if (query.size === 0) {
+            console.log("new user");
+            //returns 1 if exist, 0 if it doesn't
+            //starred_collection dont exists and therefore user does not have any article saved.
+            // set new collection
+            db.collection("users")
+              .doc(model.retrieveUserInfo().uid)
+              .collection("starred_collection")
+              .doc(`${article.uniqueID}`)
+              .set({ article });
+          } else {
+            //starred_collection DOES exist and therefore user has articles saved.
+            //update collection with new articles
+            console.log("already existing user");
 
-          db.collection("users")
-            .doc(model.retrieveUserInfo().uid)
-            .collection("starred_collection")
-            .doc(`${article.uniqueID}`)
-            .set({ article });
-        }
-      });
-
-    //     db.collection("users")
-    //       .doc(model.retrieveUserInfo().uid)
-    //       .collection("starred_collection")
-    //       .doc(`${article.uniqueID}`)
-    //       .get()
-    //       .then((doc) => {
-    //         console.log("doc data", doc.data());
-    //         if (doc.exists) {
-    //           console.log("user exists");
-    //           //   db.collection("users")
-    //           //     .doc(model.retrieveUserInfo().uid)
-    //           //     .collection("starred_collection")
-    //           //     .doc(`${article.uniqueID}`)
-    //           //     .update({ article });
-    //         } else {
-    //           console.log("user doesnt exist");
-    //           //   db.collection("users")
-    //           //     .doc(model.retrieveUserInfo().uid)
-    //           //     .collection("starred_collection")
-    //           //     .doc(`${article.uniqueID}`)
-    //           //     .set({ article });
-    //         }
-    //       });
-    //   };
-
-    // db.collection('users').doc(this.username).collection('booksList').doc(myBookId).set(
-
-    //     db.collection("users") //updates the array "starredDatabase" in firestore with
-    //       .doc(model.retrieveUserInfo().uid)
-    //       .collection("starred_collection")
-    //     	.doc(article.uniqueID)
-    //       .set({
-    //         starredArray: firebase.firestore.FieldValue.arrayUnion({ article }),
-    //       });
+            db.collection("users")
+              .doc(model.retrieveUserInfo().uid)
+              .collection("starred_collection")
+              .doc(`${article.uniqueID}`)
+              .set({ article });
+          }
+        });
+    }
   };
   const starArticle = () => {
     isStarred ? removeFromStarred() : addingToStarred();
@@ -121,7 +91,7 @@ const ArticleDisplay = ({ article }) => {
       <h3 className="title">{article.title}</h3>
 
       <a href={article.url} target="blank">
-        {article.source.name}
+        {article.source.name.toLowerCase()}
       </a>
 
       <p>published at : {article.publishedAt}</p>

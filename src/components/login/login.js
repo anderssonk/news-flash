@@ -45,47 +45,24 @@ function Login() {
       if (model.retrieveUserInfo()) {
         //checks if user logged in
 
-        console.log(starredPromise(user));
-
-        // db.collection("users")
-        //   .doc(model.retrieveUserInfo().uid)
-        //   .collection("starred_collection")
-        //   .doc("dokument")
-        //   .set({ namn: "albin" });
-        // db.collection("users")
-        // .doc(model.retrieveUserInfo().uid)
-        // .collection("starred_collection")
-        // .get()
-        // .then((doc) => {
-        //   if (doc.exists) {
-        //     console.log("doc exists");
-        //     //   db.collection("users")
-        //     //     .doc(model.retrieveUserInfo().uid)
-        //     //     .collection("starred_collection")
-        //     //     .doc(`${article.uniqueID}`)
-        //     //     .update({ article });
-        //   }})
+        starredPromise(user) //loads saved articles from firestore
+          .then((result) => {
+            console.log(result);
+            model.loginSetStarred(result); //populate sidebar with "this.starred" in model with saved articles
+          })
+          .catch((err) => {
+            console.log(
+              "There was an error retrieving data from firestore",
+              err
+            );
+          });
+      } else {
+        model.logoutSetStarred(); // resets the sidebar to empty by clearing the "this.starred" in model
       }
+
       setIsSignedIn(!!user); // !!
     });
   }, []);
-
-  // console.log(user.uid);
-  // db.collection("users")
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       if (doc.id === user.uid) {
-  //         console.log("user exists in db");
-  //         return;
-  //       } else {
-  //         db.collection("users").doc(user.uid).set({ starredArray: [] });
-
-  //         console.log("user was added to db");
-  //       }
-  //       // console.log("d:", doc.id, doc.data());
-  //     });
-  //   });
 
   return (
     <div className="login">
