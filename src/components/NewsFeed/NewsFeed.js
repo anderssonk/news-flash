@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
+import SearchField from "../search/SearchField";
 
 import { ModelContext } from "../../NewsContext";
 
@@ -10,13 +11,14 @@ const NewsFeed = () => {
   const [textState, setTextState] = useState("");
   const [typeState, setTypeState] = useState("top-headlines");
   const [categoryState, setCategoryState] = useState("general");
-
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     updateSearchResults();
-  }, [countryState, categoryState]);
+    // setTextState("");
+  }, [countryState, categoryState, textState]);
 
-  var ID = function (str) {
+  const ID = (str) => {
     var articleStr = str.toString();
 
     var i, len, ascii;
@@ -32,24 +34,36 @@ const NewsFeed = () => {
 
   const updateSearchResults = () => {
     setIsLoading(true);
-    model.searchNews(typeState, countryState, categoryState).then((data) => {
-      setSearchResultState(data);
-      data.map((article) => {
-        model.addToFeed(article);
-        article.uniqueID = ID(article.url);
+    model
+      .searchNews(typeState, countryState, categoryState, textState)
+      .then((data) => {
+        setSearchResultState(data);
+        data.map((article) => {
+          model.addToFeed(article);
+          article.uniqueID = ID(article.url);
+        });
+        setTypeState("top-headlines");
+        setIsLoading(false);
       });
-      setIsLoading(false);
-    });
+  };
+  const searchEverything = (txt, type) => {
+    setTypeState(type);
+
+    setTextState(txt);
   };
 
   return (
-    <NewsFeedView
-      news={searchResultState}
-      country={(countrycode) => setCountryState(countrycode)}
-      category={(categoryState) => {
-        setCategoryState(categoryState === "all" ? "general" : categoryState);
-      }}
-    />
+    <React.Fragment>
+      <SearchField search={(txt, type) => searchEverything(txt, type)} />
+
+      <NewsFeedView
+        news={searchResultState}
+        country={(countrycode) => setCountryState(countrycode)}
+        category={(categoryState) => {
+          setCategoryState(categoryState === "all" ? "general" : categoryState);
+        }}
+      />
+    </React.Fragment>
   );
 };
 

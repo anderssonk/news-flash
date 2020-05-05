@@ -4,7 +4,6 @@ import "./login.css";
 import firebase from "../../util/firebaseConfig";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { ModelContext } from "../../NewsContext";
-
 function Login() {
   const { model } = useContext(ModelContext);
   const db = firebase.firestore();

@@ -133,6 +133,7 @@ class NewsModel {
   }
 
   handleQuery(query) {
+    console.log("query", query);
     return fetch(
       `https://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`
     )
@@ -146,9 +147,19 @@ class NewsModel {
     throw Error(response.statusText); // otherwise logs an error
   }
 
-  searchNews(type, country = "se", category = "") {
-    let x = this.handleQuery(`${type}?country=${country}&category=${category}`);
-    return x.then((data) => data.articles);
+  searchNews(type, country = "se", category = "", searchString = "") {
+    let API_promise;
+    console.log("searchstr", searchString);
+    if (type === "everything" && searchString !== "") {
+      //when searching for news
+      API_promise = this.handleQuery(`${type}?q=${searchString}`);
+    } else {
+      API_promise = this.handleQuery(
+        `${type}?country=${country}&category=${category}`
+      );
+    }
+
+    return API_promise.then((data) => data.articles);
   }
 
   getDataFromAPITopHeadlines(type, country = "se", searchString) {
