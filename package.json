@@ -6,9 +6,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
-    "firebase": "^7.11.0",
+    "firebase": "^7.14.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-firebaseui": "^4.1.0",
     "react-loading-skeleton-placeholders": "^1.2.1",
     "react-scripts": "3.4.0"
   },
@@ -33,5 +34,4 @@
       "last 1 safari version"
     ]
   }
-
 }

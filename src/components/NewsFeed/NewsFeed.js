@@ -62,6 +62,7 @@ const NewsFeed = () => {
 				category={(categoryState) => {
 					setCategoryState(categoryState === "all" ? "general" : categoryState);
 				}}
+				isLoading={isLoading}
 			/>
 		</>
 	);
