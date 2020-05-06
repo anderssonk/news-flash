@@ -37,19 +37,39 @@ const NewsFeed = () => {
     model
       .searchNews(typeState, countryState, categoryState, textState)
       .then((data) => {
-        setSearchResultState(data);
-        data.map((article) => {
-          model.addToFeed(article);
-          article.uniqueID = ID(article.url);
-        });
+        console.log("data", data);
+        if (data !== undefined && data.totalResults > 0) {
+          setSearchResultState(data.articles);
+          data.articles.map((article) => {
+            model.addToFeed(article);
+            article.uniqueID = ID(article.url);
+          });
+        } else {
+          var error_article = {
+            source: { id: null, name: "error" },
+            author: "error",
+            title: `There was no search results of ${textState}`,
+            description: `There was no search results of " ${textState} " `,
+            url: null,
+            urlToImage: null,
+            publishedAt: `${new Date()}`,
+            content: `There was no search results of ${textState}`,
+            uniqueID: "error",
+          };
+          setSearchResultState([error_article]);
+
+          model.addToFeed(error_article);
+        }
+
         setTypeState("top-headlines");
         setIsLoading(false);
       });
   };
+
   const searchEverything = (txt, type) => {
     setTypeState(type);
-
     setTextState(txt);
+    //document.getElementById("search-field").value = "";
   };
 
   return (

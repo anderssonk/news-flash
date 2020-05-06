@@ -143,11 +143,17 @@ class NewsModel {
   }
 
   handleHTTPError(response) {
-    if (response.ok) return response;
+    if (response.ok) {
+      return response;
+    }
+    console.log("error", response);
     throw Error(response.statusText); // otherwise logs an error
   }
 
-  searchNews(type, country = "se", category = "", searchString = "") {
+  async searchNews(type, country = "se", category = "", searchString = "") {
+    if (!searchString.replace(/\s/g, "").length < 0) {
+      return; //if searchstring contains empty strings the searchNews call is ended to prevent failures
+    }
     let API_promise;
     console.log("searchstr", searchString);
     if (type === "everything" && searchString !== "") {
@@ -159,7 +165,9 @@ class NewsModel {
       );
     }
 
-    return API_promise.then((data) => data.articles);
+    var returnPromise = await API_promise;
+
+    return returnPromise;
   }
 
   getDataFromAPITopHeadlines(type, country = "se", searchString) {
