@@ -14,26 +14,7 @@ const ArticleDisplay = ({ article }) => {
   const removeFromStarred = () => {
     model.removeFromStarred(article.url);
     model.removeFromStarredDataBase(article);
-    // if (model.retrieveUserInfo()) {
-    //   db.collection("users") //removes article document with id
-    //     .doc(model.retrieveUserInfo().uid)
-    //     .collection("starred_collection")
-    //     .doc(`${article.uniqueID}`)
-    //     .get()
-    //     .then((doc) => {
-    //       //if document exists
-    //       if (doc.exists) {
-    //         db.collection("users")
-    //           .doc(model.retrieveUserInfo().uid)
-    //           .collection("starred_collection")
-    //           .doc(`${article.uniqueID}`)
-    //           .delete();
-    //         console.log("deleted");
-    //       } else {
-    //         console.log("article is not deletable");
-    //       }
-    //     });
-    // }
+ 
   };
 
   const addingToStarred = () => {
