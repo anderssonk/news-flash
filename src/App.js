@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./typography.css";
 import NewsFeed from "./components/newsfeed/NewsFeed";
@@ -9,7 +9,7 @@ import Header from "./components/header.js";
 function App() {
   return (
 
-    <body className="container">
+    <div className="container">
       <Header></Header>
       <div className="App">
 
@@ -18,7 +18,7 @@ function App() {
           <Sidebar />
         </ModelContextProvider>
       </div>
-    </body>
+    </div>
 
   );
 }

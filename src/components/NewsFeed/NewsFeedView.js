@@ -5,7 +5,6 @@ import CategorySearch from "../search/NewsCategory";
 import Skeletons from "../skeletons/skeletons";
 
 const NewsFeedView = ({ news, country, category }) => {
-
   return news ? (
     <div className="mainContent">
       <div className="search-container">

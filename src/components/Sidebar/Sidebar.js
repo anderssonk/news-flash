@@ -4,17 +4,17 @@ import { ModelContext } from "../../NewsContext";
 import useObserver from "../../hooks/useObserver";
 
 const Sidebar = () => {
-	const { model } = useContext(ModelContext);
+  const { model } = useContext(ModelContext);
 
-	const starredArray = useObserver("starred", model);
-	return (
-		<div className="sideBar">
-			<SidebarView
-				starred={starredArray}
-				remove={(url) => model.removeFromStarred(url)}
-			/>
-		</div>
-	);
+  const starredArray = useObserver("starred", model);
+  return (
+    <div className="sideBar">
+      <SidebarView
+        starred={starredArray}
+        remove={(article) => model.removeFromStarred(article)}
+      />
+    </div>
+  );
 };
 
 export default Sidebar;
