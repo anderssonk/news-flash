@@ -4,7 +4,7 @@ import CountrySearch from "../search/NewsCountry";
 import CategorySearch from "../search/NewsCategory";
 import Skeletons from "../skeletons/skeletons";
 
-const NewsFeedView = ({ news, country, category }) => {
+const NewsFeedView = ({ news, country, category, isLoading }) => {
 	return (
 		<div className="mainContent">
 			<div className="search-container">
@@ -12,7 +12,7 @@ const NewsFeedView = ({ news, country, category }) => {
 				<CountrySearch country={country} />
 			</div>
 			<div className="generated-news">
-				{news ? (
+				{!isLoading && news ? (
 					news.map((article, index) => (
 						<ArticleDisplay article={article} key={index} />
 					))
