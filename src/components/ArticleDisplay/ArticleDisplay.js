@@ -16,14 +16,13 @@ const ArticleDisplay = ({ article }) => {
 		model.removeFromStarredDataBase(article);
 	};
 
-	const addingToStarred = () => {
+	const addToStarred = () => {
 		model.addToStarred(article.url);
 		setisStarred(!isStarred);
 		model.addToStarredDatabase(article);
 	};
 	const starArticle = () => {
-		isStarred ? removeFromStarred() : addingToStarred();
-		console.log("article is starred");
+		isStarred ? removeFromStarred() : addToStarred();
 	};
 
 	useEffect(() => {
@@ -40,7 +39,7 @@ const ArticleDisplay = ({ article }) => {
 			<h3 className="title">{article.title}</h3>
 
 			<a href={article.url} target="blank">
-				{article.source.name.toLowerCase()}
+				{article.source.name}
 			</a>
 
 			<p>published at : {article.publishedAt}</p>

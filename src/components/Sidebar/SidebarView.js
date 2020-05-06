@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./../button/Button";
+import { ModelContext } from "../../NewsContext";
 
 const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
+	const { model } = useContext(ModelContext);
+
 	const starredDisplay = (starredArray) => {
 		return starredArray.map((article) => (
 			<div className="starredDisplay" key={article.url}>
@@ -9,8 +12,14 @@ const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
 				<a href={article.url} target="_blank" rel="noopener noreferrer">
 					<div className="source">{article.source.name}</div>
 				</a>
-				<Button type="primary" onClick={() => remove(article.url)}>
-					X
+				<Button
+					type="primary"
+					onClick={() => {
+						remove(article.url);
+						model.removeFromStarredDataBase(article);
+					}}
+				>
+					&times;
 				</Button>
 
 				<Button
@@ -24,25 +33,6 @@ const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
 				</Button>
 
 				{article.comment && <div>{article.comment}</div>}
-			</div>
-		));
-	};
-
-	const starredDisplay = (starredArray) => {
-		return starredArray.map((article) => (
-			<div className="starredDisplay" key={article.url}>
-				<div id="starredTitle">{article.title}</div>
-				<a href={article.url} target="_blank" rel="noopener noreferrer">
-					<div id="starredSource">{article.source.name.toLowerCase()}</div>
-				</a>
-				<button
-					onClick={() => {
-						remove(article.url);
-						model.removeFromStarredDataBase(article);
-					}}
-				>
-					X
-				</button>
 			</div>
 		));
 	};
