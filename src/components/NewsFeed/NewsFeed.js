@@ -54,7 +54,7 @@ const NewsFeed = () => {
 
 	return (
 		<>
-			<SearchField search={(txt, type) => searchEverything(txt, type)} />
+			
 
 			<NewsFeedView
 				news={searchResultState}
@@ -63,6 +63,7 @@ const NewsFeed = () => {
 					setCategoryState(categoryState === "all" ? "general" : categoryState);
 				}}
 				isLoading={isLoading}
+				search={(txt, type) => searchEverything(txt, type)}
 			/>
 		</>
 	);
