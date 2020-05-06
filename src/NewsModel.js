@@ -65,6 +65,9 @@ class NewsModel {
       console.log(url, " has already been starred.");
     }
   }
+  addComment(article, comment) {
+    article.comment = comment;
+  }
 
   addToStarredDatabase(article) {
     const db = firebase.firestore();

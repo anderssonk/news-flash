@@ -15,7 +15,6 @@ const NewsFeed = () => {
 
   useEffect(() => {
     updateSearchResults();
-    // setTextState("");
   }, [countryState, categoryState, textState]);
 
   const ID = (str) => {
@@ -73,7 +72,7 @@ const NewsFeed = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <SearchField search={(txt, type) => searchEverything(txt, type)} />
 
       <NewsFeedView
@@ -82,8 +81,9 @@ const NewsFeed = () => {
         category={(categoryState) => {
           setCategoryState(categoryState === "all" ? "general" : categoryState);
         }}
+        isLoading={isLoading}
       />
-    </React.Fragment>
+    </>
   );
 };
 
