@@ -196,3 +196,9 @@
 .dropdown:hover {
   color: #4f85c0;
 }
+.comment {
+  background-color: rgba(90, 143, 199, 0.521);
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px dotted;
+}

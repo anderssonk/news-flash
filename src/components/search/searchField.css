@@ -1,31 +1,32 @@
 input {
-	background-color: rgba(0, 0, 0, 0.1);
-	border: none;
-	border-radius: 0.2rem;
-	height: 1.8rem;
-	width: 50%;
-	margin: 0.2rem 0.1rem;
-	padding: 0.1rem 1rem;
-	color: #eee;
-	font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 0.2rem;
+  height: 1.8rem;
+  width: 50%;
+  margin: 0.2rem 0.1rem;
+  padding: 0.1rem 1rem;
+  color: #eee;
+  font-size: 1rem;
 }
 
 input:hover {
-	background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
 }
 
 ::placeholder {
-	/* Chrome, Firefox, Opera, Safari 10.1+ */
-	color: rgba(0, 0, 0, 0.3);
-	opacity: 1; /* Firefox */
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
-	/* Internet Explorer 10-11 */
-	color: rgba(0, 0, 0, 0.3);
+  /* Internet Explorer 10-11 */
+  color: rgba(0, 0, 0, 0.3);
 }
 
 ::-ms-input-placeholder {
-	/* Microsoft Edge */
-	color: rgba(0, 0, 0, 0.3);
+  /* Microsoft Edge */
+  color: rgba(0, 0, 0, 0.3);
 }
