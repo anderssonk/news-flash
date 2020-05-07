@@ -62,28 +62,28 @@ const Login = () => {
 		});
 	}, []);
 
-	return (
-		<div className="login">
-			{isSignedIn ? (
-				<div className="loggedIn">
-					<button onClick={() => firebase.auth().signOut()}>Sign out</button>
-					<p>Welcome {firebase.auth().currentUser.displayName}</p>
-					<img
-						id="profileImage"
-						alt="profileIMG"
-						src={firebase.auth().currentUser.photoURL}
-					/>
-				</div>
-			) : (
-				<div className="preLoggedIn">
-					<StyledFirebaseAuth
-						uiConfig={uiConfig}
-						firebaseAuth={firebase.auth()}
-					/>
-				</div>
-			)}
-		</div>
-	);
-};
+  return (
+    <>
+      {isSignedIn ? (
+        <div className="loggedIn">
+          <img
+            id="profileImage"
+            alt="profileIMG"
+            src={firebase.auth().currentUser.photoURL}
+          />
+          <div id="loggedIn_message">Welcome {firebase.auth().currentUser.displayName}</div>
+          <button id ="logout_button" onClick={() => firebase.auth().signOut()}>Sign out</button>
+        </div>
+      ) : (
+        <div className="preLoggedIn">
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        </div>
+      )}
+    </>
+  );
+}
 
 export default Login;
