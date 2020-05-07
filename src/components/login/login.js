@@ -62,7 +62,6 @@ const Login = () => {
 		});
 	}, []);
 
-<<<<<<< HEAD
   return (
     <>
       {isSignedIn ? (
@@ -86,30 +85,5 @@ const Login = () => {
     </>
   );
 }
-=======
-	return (
-		<div className="login">
-			{isSignedIn ? (
-				<div className="loggedIn">
-					<button onClick={() => firebase.auth().signOut()}>Sign out</button>
-					<p>Welcome {firebase.auth().currentUser.displayName}</p>
-					<img
-						id="profileImage"
-						alt="profileIMG"
-						src={firebase.auth().currentUser.photoURL}
-					/>
-				</div>
-			) : (
-				<div className="preLoggedIn">
-					<StyledFirebaseAuth
-						uiConfig={uiConfig}
-						firebaseAuth={firebase.auth()}
-					/>
-				</div>
-			)}
-		</div>
-	);
-};
->>>>>>> ed70fbe0c5626697ad50ec6c626284f02604fbf8
 
 export default Login;
