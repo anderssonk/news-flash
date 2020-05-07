@@ -70,6 +70,7 @@
 	grid-column: 10/12;
 	background-color: #fff;
 	border-left: 1px solid #eee;
+	overflow-y: scroll;
 }
 
 .search-container {
