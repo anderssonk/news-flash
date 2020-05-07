@@ -28,11 +28,14 @@
 }
 
 .starred {
-	float: right;
 	border: none;
 	color: #2b2b2b;
 	font-size: 1.8rem;
 	background-color: transparent;
+}
+
+.articleDisplay .starred {
+	float: right;
 }
 
 .starred:hover {

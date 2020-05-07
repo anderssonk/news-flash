@@ -13,7 +13,8 @@ const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
 					<div className="source">{article.source.name}</div>
 				</a>
 				<Button
-					type="primary"
+					starred
+					isStarred={true}
 					onClick={() => {
 						remove(article.url);
 						model.removeFromStarredDataBase(article);
