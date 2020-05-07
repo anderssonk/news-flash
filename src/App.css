@@ -11,11 +11,11 @@
 		rgba(62, 83, 104, 1) 100.2%
 	);
 }
-
 .App {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	overflow: hidden;
+	
 }
 
 .header {
@@ -23,6 +23,40 @@
 	/* border-bottom: 5px solid #eee; */
 	padding: 0 1rem 0 1rem;
 	transition: all 0.15s linear;
+	grid-template-columns: repeat(12, 1fr);
+	display: grid;
+}
+
+.page_title{
+	grid-column: 2/4;
+	
+}
+
+.preLoggedIn {
+	grid-column: 11/12;
+	height: 4rem;
+}
+
+.login{
+	grid-column: 9/12;
+	height: 4rem;
+	
+}
+
+.loggedIn{   
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 1fr 1fr 1fr;
+	/*grid-template-columns: repeat(3);*/
+}
+
+.loggedIn_message{
+	grid-column: 2;
+	color: black;
+}
+
+.logout_button{
+	grid-column: 3;
 }
 
 .header.active {
@@ -39,10 +73,16 @@
 
 .sideBar {
 	grid-column: 10/12;
+<<<<<<< HEAD
 	margin: 2rem 0 0 1rem;
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.2rem;
 	/* border-left: 1px solid #eee; */
+=======
+	background-color: #fff;
+	border-left: 1px solid #eee;
+	overflow-y: scroll;
+>>>>>>> 5ed97e3abeca2c618c7bd0e69d87f8743289213a
 }
 
 .search-container {

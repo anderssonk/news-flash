@@ -10,15 +10,16 @@ import Login from "./components/login/login";
 function App() {
 	return (
 		<div className="container">
-			<Header></Header>
-			<div className="App">
 				<ModelContextProvider>
+					<Header>	
+					</Header>
+					<div className="App">
 					<NewsFeed />
 					<Sidebar />
-					<Login />
+					</div>
 				</ModelContextProvider>
 			</div>
-		</div>
+		
 	);
 }
 
