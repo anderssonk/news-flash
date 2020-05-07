@@ -28,29 +28,30 @@
 }
 
 .preLoggedIn {
-	grid-column: 9/11;
+	grid-column: 11/12;
 	height: 4rem;
 }
 
 .login{
-	grid-column: 9/11;
+	grid-column: 9/12;
 	height: 4rem;
 	
 }
 
-.loggedIn{
-	grid-column: 9/11;
-	grid-template-columns: repeat(3);
-	display: grid;
-	height: 4rem;
+.loggedIn{   
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 1fr 1fr 1fr;
+	/*grid-template-columns: repeat(3);*/
 }
 
 .loggedIn_message{
-	grid-column: 2/3;
+	grid-column: 2;
+	color: black;
 }
 
 .logout_button{
-	grid-column: 3/4;
+	grid-column: 3;
 }
 
 .header.active {

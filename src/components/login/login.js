@@ -72,8 +72,8 @@ function Login() {
             alt="profileIMG"
             src={firebase.auth().currentUser.photoURL}
           />
-          <div>Welcome {firebase.auth().currentUser.displayName}</div>
-          <button onClick={() => firebase.auth().signOut()}>Sign out</button>
+          <div id="loggedIn_message">Welcome {firebase.auth().currentUser.displayName}</div>
+          <button id ="logout_button" onClick={() => firebase.auth().signOut()}>Sign out</button>
         </div>
       ) : (
         <div className="preLoggedIn">

@@ -10,11 +10,8 @@ import Login from "./components/login/login";
 function App() {
 	return (
 		<div className="container">
-			
 				<ModelContextProvider>
-
-					<Header>
-						
+					<Header>	
 					</Header>
 					<div className="App">
 					<NewsFeed />
