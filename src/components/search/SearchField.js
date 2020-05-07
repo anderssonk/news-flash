@@ -16,9 +16,9 @@ const SearchField = ({ search }) => {
       <button
         onClick={() => {
           search(input, "everything");
-          console.log("onclick", input);
+          console.log("onclickSearch:", input);
           {
-            /* setInput(""); */
+            /* resetInput(); */
           }
         }}
       >

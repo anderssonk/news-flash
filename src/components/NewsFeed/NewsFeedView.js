@@ -3,11 +3,14 @@ import ArticleDisplay from "../articleDisplay/ArticleDisplay";
 import CountrySearch from "../search/NewsCountry";
 import CategorySearch from "../search/NewsCategory";
 import Skeletons from "../skeletons/skeletons";
+import SearchField from "../search/SearchField";
 
-const NewsFeedView = ({ news, country, category, isLoading }) => {
+const NewsFeedView = ({ news, country, category, isLoading, search }) => {
 	return (
 		<div className="mainContent">
 			<div className="search-container">
+		
+				<SearchField search={search} />
 				<CategorySearch category={category} />
 				<CountrySearch country={country} />
 			</div>

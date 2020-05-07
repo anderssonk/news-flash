@@ -27,6 +27,7 @@ const SidebarView = ({ starred, remove, commentPrompt, forceUpdate }) => {
 					type="tertiary"
 					onClick={() => {
 						commentPrompt(article);
+						model.addToStarredDatabase(article);
 						forceUpdate(); // forces component update, as useObserver doesn't listen to props changing in object
 					}}
 				>
