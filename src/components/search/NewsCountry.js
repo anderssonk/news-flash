@@ -7,7 +7,7 @@ const NewsCountry = ({ country }) => {
 		fr: "FR",
 		gb: "UK",
 		no: "NO",
-		us: "US"
+		us: "US",
 	};
 	const countryCodes = Object.keys(countries);
 	const countryNames = Object.values(countries);
@@ -15,7 +15,7 @@ const NewsCountry = ({ country }) => {
 	const chooseCountry = countryCodes.map((
 		country //JSX element option
 	) => (
-		<option className="poop" key={country} value={country}>
+		<option key={country} value={country}>
 			{countryNames[countryCodes.indexOf(country)]}
 		</option>
 	));
@@ -24,7 +24,7 @@ const NewsCountry = ({ country }) => {
 			<form>
 				<select
 					className="dropdown"
-					onChange={option => country(option.target.value)}
+					onChange={(option) => country(option.target.value)}
 				>
 					{chooseCountry}
 				</select>
