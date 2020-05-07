@@ -9,10 +9,12 @@ const NewsFeedView = ({ news, country, category, isLoading, search }) => {
 	return (
 		<div className="mainContent">
 			<div className="search-container">
-		
 				<SearchField search={search} />
-				<CategorySearch category={category} />
-				<CountrySearch country={country} />
+
+				<div className="filters">
+					<CategorySearch category={category} />
+					<CountrySearch country={country} />
+				</div>
 			</div>
 			<div className="generated-news">
 				{!isLoading && news ? (
