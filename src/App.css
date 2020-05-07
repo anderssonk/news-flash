@@ -68,6 +68,10 @@
   grid-template-rows: repeat(2);
 }
 
+::-webkit-scrollbar{
+	display: none;
+}
+
 .sideBar {
   grid-column: 10/12;
   margin: 2rem 0 0 1rem;
