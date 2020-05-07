@@ -50,7 +50,7 @@ const NewsFeed = () => {
             title: `There was no search results of ${textState}`,
             description: `There was no search results of " ${textState} " `,
             url: null,
-            urlToImage: null,
+            urlToImage: `https://pbs.twimg.com/media/DjCVuEWUYAAoqk2.jpg`,
             publishedAt: `${new Date()}`,
             content: `There was no search results of ${textState}`,
             uniqueID: "error",
