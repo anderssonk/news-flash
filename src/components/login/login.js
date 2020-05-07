@@ -64,16 +64,16 @@ function Login() {
   }, []);
 
   return (
-    <div className="login">
+    <>
       {isSignedIn ? (
         <div className="loggedIn">
-          <button onClick={() => firebase.auth().signOut()}>Sign out</button>
-          <p>Welcome {firebase.auth().currentUser.displayName}</p>
           <img
             id="profileImage"
             alt="profileIMG"
             src={firebase.auth().currentUser.photoURL}
           />
+          <div>Welcome {firebase.auth().currentUser.displayName}</div>
+          <button onClick={() => firebase.auth().signOut()}>Sign out</button>
         </div>
       ) : (
         <div className="preLoggedIn">
@@ -83,7 +83,7 @@ function Login() {
           />
         </div>
       )}
-    </div>
+    </>
   );
 }
 
