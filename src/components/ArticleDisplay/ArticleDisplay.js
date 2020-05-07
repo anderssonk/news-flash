@@ -36,14 +36,18 @@ const ArticleDisplay = ({ article }) => {
 			<div id="img-container">
 				<img src={article.urlToImage} alt="articleimg" />
 			</div>
-			<h3 className="title">{article.title}</h3>
-
-			<a href={article.url} target="blank">
-				{article.source.name}
-			</a>
-
-			<p>published at : {article.publishedAt}</p>
-			<Button starred isStarred={isStarred} onClick={starArticle}></Button>
+			<div className="articleDisplay-content">
+				<h3 className="title">{article.title}</h3>
+				<div className="articleDisplay-info">
+					<div>
+						<a href={article.url} target="blank">
+							{article.source.name}
+						</a>
+						<div>published: {article.publishedAt}</div>
+					</div>
+					<Button starred isStarred={isStarred} onClick={starArticle}></Button>
+				</div>
+			</div>
 		</div>
 	);
 };
