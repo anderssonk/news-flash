@@ -1,52 +1,51 @@
 body {
-	font-family: "Benton Sans", sans-serif;
+  font-family: "Benton Sans", sans-serif;
 }
 
 h1,
 h2,
 h3,
 h4 {
-	color: #2b2b2b;
+  color: #2b2b2b;
 }
 
 h1 {
-	font-size: 2rem;
-	line-height: 1rem;
+  font-size: 2rem;
+  line-height: 1rem;
 }
 
 h3 {
-	font-size: 1.5rem;
-	line-height: 1.6rem;
-	margin: 2px 0 8px;
+  font-size: 1.5rem;
+  line-height: 1.6rem;
+  margin: 2px 0 8px;
 }
 
 h4 {
-	font-size: 1.3rem;
-	margin: 1rem;
+  font-size: 1.3rem;
+  margin: 1rem;
 }
 
 .header__title {
-	/*display: inline-block;*/
-	font-style: italic;
-	color: #fff;
+  /*display: inline-block;*/
+  font-style: italic;
 }
 
 a {
-	font-weight: 600;
-	color: #1d70b8;
-	text-decoration: none;
+  font-weight: 600;
+  color: #1d70b8;
+  text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .source {
-	text-transform: lowercase;
+  text-transform: lowercase;
 }
 
 #starredTitle {
-	color: #2b2b2b;
-	font-weight: bold;
-	word-wrap: break-word;
+  color: #2b2b2b;
+  font-weight: bold;
+  word-wrap: break-word;
 }

@@ -1,180 +1,182 @@
 .container {
-	height: 100vh;
-	width: 100vw;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 4rem 1fr;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr;
 }
 .App {
-	display: grid;
-	background-color: #eeeeee;
-	grid-template-columns: repeat(12, 1fr);
-	overflow: hidden;
-	
+  display: grid;
+  background-color: #eeeeee;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
 }
 
 .header {
-	background: #fff;
-	border-bottom: 5px solid #2b2b2b;
-	padding: 0 1rem 0 1rem;
-	transition: all 0.15s linear;
-	grid-template-columns: repeat(12, 1fr);
-	display: grid;
+  background: #fff;
+  border-bottom: 5px solid #2b2b2b;
+  padding: 0 1rem 0 1rem;
+  transition: all 0.15s linear;
+  grid-template-columns: repeat(12, 1fr);
+  display: grid;
 }
 
-.page_title{
-	grid-column: 2/4;
-	
+.page_title {
+  grid-column: 2 / span 2;
 }
 
 .preLoggedIn {
-	grid-column: 11/12;
-	height: 4rem;
+  grid-column: 11/12;
+  height: 4rem;
 }
 
-.login{
-	grid-column: 9/12;
-	height: 4rem;
-	
+.login {
+  grid-column: 10/13;
 }
 
-.loggedIn{   
-    display: grid;
-    grid-gap: 2px;
-    grid-template-columns: 1fr 1fr 1fr;
-	/*grid-template-columns: repeat(3);*/
+.loggedIn {
+  height: 100%;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: 1fr 1fr 1fr;
+  /*grid-template-columns: repeat(3);*/
 }
 
-.loggedIn_message{
-	grid-column: 2;
-	color: black;
+.loggedIn_message {
+  grid-column: 2;
+  color: black;
 }
 
-.logout_button{
-	grid-column: 3;
+.logout_button {
+  grid-column: 3;
 }
 
 .header.active {
-	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
 }
 
 .mainContent {
-	overflow-y: scroll;
-	grid-column: 2/10;
-	background-color: #fff;
-	display: grid;
-	grid-template-rows: repeat(2);
+  overflow-y: scroll;
+  grid-column: 2/10;
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: repeat(2);
 }
 
 .sideBar {
-	grid-column: 10/12;
-	background-color: #fff;
-	border-left: 1px solid #eee;
+  grid-column: 10/12;
+  background-color: #fff;
+  border-left: 1px solid #eee;
 }
 
 .search-container {
-	/* padding: 10px; */
+  /* padding: 10px; */
 }
 
 .generated-news {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 @media screen and (max-width: 650px) {
-	.generated-news {
-		grid-template-columns: repeat(1, 1fr);
-	}
+  .generated-news {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 #categories {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	min-height: 2.5rem;
-	background-color: #2b2b2b;
-	grid-template-rows: 1/1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  min-height: 2.5rem;
+  background-color: #2b2b2b;
+  grid-template-rows: 1/1;
 }
 
 .articleDisplay {
-	background-color: #eee;
-	margin: 10px;
-	border-bottom: 0.3rem solid #ccc;
-	border-radius: 1rem;
+  background-color: #eee;
+  margin: 10px;
+  border-bottom: 0.3rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .articleDisplay-content {
-	margin: 0.5rem 0.5rem;
+  margin: 0.5rem 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .articleDisplay-info {
-	display: flex;
-	flex-direction: row;
-	align-items: space-between;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .articleDisplay img {
-	max-width: 100%;
-	border-top-left-radius: 1rem;
-	border-top-right-radius: 1rem;
+  max-width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .img-container {
-	background-color: #666;
+  background-color: #666;
 }
 
 .starredDisplay {
-	background: #eee;
-	border-bottom: medium solid #ccc;
-	border-radius: 1rem;
-	margin: 10px;
-	padding: 10px;
+  background: #eee;
+  border-bottom: medium solid #ccc;
+  border-radius: 1rem;
+  margin: 10px;
+  padding: 10px;
 }
 
 /* Category buttons */
 .btn-toggle {
-	flex-grow: 1;
-	border: none;
-	outline: none;
-	width: 7rem;
-	height: 2.8rem;
-	padding: 4px 2px 4px 2px;
-	background-color: #2b2b2b;
-	color: white;
-	cursor: pointer;
-	font-size: 1rem;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  width: 7rem;
+  height: 2.8rem;
+  padding: 4px 2px 4px 2px;
+  background-color: #2b2b2b;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 /* Style the active class, and buttons on mouse-over */
 .btn-toggle-active,
 .btn-toggle:hover {
-	background-color: #fff;
-	border-top: 4px solid rgba(90, 143, 199, 0.521);
-	color: #2b2b2b;
+  background-color: #fff;
+  border-top: 4px solid rgba(90, 143, 199, 0.521);
+  color: #2b2b2b;
 }
 
 .btn-toggle-active {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .horisontal-line {
-	width: 90%;
-	margin: auto;
-	border-top: 4px solid rgba(90, 143, 199, 0.521);
+  width: 90%;
+  margin: auto;
+  border-top: 4px solid rgba(90, 143, 199, 0.521);
 }
 
 .dropdown {
-	border: none;
-	cursor: pointer;
-	height: 2.8rem;
-	width: 3rem;
-	font-size: 1rem;
-	font-weight: 600;
-	color: #2b2b2b;
-	background: #fafafa;
+  border: none;
+  cursor: pointer;
+  height: 2.8rem;
+  width: 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  background: #fafafa;
 }
 
 .dropdown:hover {
-	color: #2773c6;
+  color: #2773c6;
 }
