@@ -1,19 +1,51 @@
+.preLoggedIn {
+  grid-column: 11/12;
+  height: 4rem;
+}
+
 .login {
-  /* grid-column: 10 / span 2; */
+  grid-column: 10/13;
 }
+
 .loggedIn {
-  /*display: grid;
-  grid-template-columns: 1fr 1fr 1fr;*/
-
-  /* width: 100%;
-    height: 100%; */
+  height: 100%;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: 1fr 1fr 1fr;
+  /*grid-template-columns: repeat(3);*/
 }
 
+#loggedIn_message {
+  font-family: Arial, Helvetica, sans-serif;
+  visibility: hidden;
+
+  background-color: rgba(87, 174, 211, 1);
+  color: white;
+  border-radius: 3px;
+  border: 2px solid #9a9695;
+
+  grid-column: 1/2;
+}
+#logout_button {
+  grid-column: 3/4;
+}
+
+#profileImageDiv:hover #loggedIn_message {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#profileImageDiv {
+  grid-column: 2/3;
+}
 #profileImage {
-  grid-column: 1;
+  /* grid-column: 2; */
   margin-top: 3px;
   height: 90%;
   border-radius: 50%;
+  border: 2px solid #9a9695;
+  max-height: 100%;
 }
 
 .btn-signout {

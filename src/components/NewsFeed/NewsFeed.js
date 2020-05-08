@@ -47,7 +47,7 @@ const NewsFeed = () => {
           var error_article = {
             source: { id: null, name: "error" },
             author: "error",
-            title: `There was no search results of ${textState}`,
+            title: `There was no search results of "${textState}"`,
             description: `There was no search results of " ${textState} " `,
             url: null,
             urlToImage: `https://pbs.twimg.com/media/DjCVuEWUYAAoqk2.jpg`,
@@ -71,22 +71,19 @@ const NewsFeed = () => {
     //document.getElementById("search-field").value = "";
   };
 
-
-	return (
-		<>
-			
-
-			<NewsFeedView
-				news={searchResultState}
-				country={(countrycode) => setCountryState(countrycode)}
-				category={(categoryState) => {
-					setCategoryState(categoryState === "all" ? "general" : categoryState);
-				}}
-				isLoading={isLoading}
-				search={(txt, type) => searchEverything(txt, type)}
-			/>
-		</>
-	);
+  return (
+    <>
+      <NewsFeedView
+        news={searchResultState}
+        country={(countrycode) => setCountryState(countrycode)}
+        category={(categoryState) => {
+          setCategoryState(categoryState === "all" ? "general" : categoryState);
+        }}
+        isLoading={isLoading}
+        search={(txt, type) => searchEverything(txt, type)}
+      />
+    </>
+  );
 };
 
 export default NewsFeed;
