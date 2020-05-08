@@ -86,7 +86,13 @@
     font-size: 10px;
   }
   .login {
-    grid-column: 8/11 !important;
+    grid-column: 8/13 !important;
+  }
+  .firebaseui-idp-button {
+    padding: 3px !important;
+  }
+  .firebaseui-idp-text {
+    font-size: 10px !important;
   }
   h4 {
     font-size: 12px !important;
