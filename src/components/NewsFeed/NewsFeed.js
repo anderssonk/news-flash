@@ -44,20 +44,7 @@ const NewsFeed = () => {
             article.uniqueID = ID(article.url);
           });
         } else {
-          var error_article = {
-            source: { id: null, name: "error" },
-            author: "error",
-            title: `There was no search results of ${textState}`,
-            description: `There was no search results of " ${textState} " `,
-            url: null,
-            urlToImage: `https://pbs.twimg.com/media/DjCVuEWUYAAoqk2.jpg`,
-            publishedAt: `${new Date()}`,
-            content: `There was no search results of ${textState}`,
-            uniqueID: "error",
-          };
-          setSearchResultState([error_article]);
-
-          model.addToFeed(error_article);
+          setSearchResultState();
         }
 
         setTypeState("top-headlines");
@@ -74,8 +61,6 @@ const NewsFeed = () => {
 
 	return (
 		<>
-			
-
 			<NewsFeedView
 				news={searchResultState}
 				country={(countrycode) => setCountryState(countrycode)}
@@ -85,8 +70,8 @@ const NewsFeed = () => {
 				isLoading={isLoading}
 				search={(txt, type) => searchEverything(txt, type)}
 			/>
+    
 		</>
 	);
-};
-
+}
 export default NewsFeed;

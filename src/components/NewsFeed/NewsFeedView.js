@@ -4,6 +4,9 @@ import CountrySearch from "../search/NewsCountry";
 import CategorySearch from "../search/NewsCategory";
 import Skeletons from "../skeletons/skeletons";
 import SearchField from "../search/SearchField";
+import ErrorArticleView from "../errorArticle/ErrorArticle";
+
+
 
 const NewsFeedView = ({ news, country, category, isLoading, search }) => {
 	return (
@@ -21,9 +24,11 @@ const NewsFeedView = ({ news, country, category, isLoading, search }) => {
 					news.map((article, index) => (
 						<ArticleDisplay article={article} key={index} />
 					))
-				) : (
-					<Skeletons />
-				)}
+				) : [!isLoading ? (
+						<ErrorArticleView/>
+				) : <Skeletons />
+				
+				]}
 			</div>
 		</div>
 	);
