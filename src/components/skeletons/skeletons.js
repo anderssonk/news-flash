@@ -6,7 +6,7 @@ import Skeleton from "./skeleton/skeleton";
 
 const skeletonRepeats = [1, 2, 3, 4, 5, 6];
 
-const Skeletons = (props) => {
+const Skeletons = ({ props }) => {
   return skeletonRepeats.map((index) => <Skeleton key={index} />);
 };
 

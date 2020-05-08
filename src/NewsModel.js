@@ -15,17 +15,16 @@ class NewsModel {
 
   assignUser(user) {
     this.user = user;
-    console.log("assigned user:", user);
   }
 
   addObserver(callback) {
-    console.log("NewsModel: addObserver: ", callback);
+    // console.log("NewsModel: addObserver: ", callback);
     this.callback = callback;
     this.subscribers.push(callback);
   }
   notifyObservers(whatHappened) {
     //calls what's in subscribers list
-    console.log("NewsModel: notifyObservers: ", whatHappened);
+    // console.log("NewsModel: notifyObservers: ", whatHappened);
     this.subscribers.forEach((callback) => callback(whatHappened));
   }
 
@@ -81,7 +80,6 @@ class NewsModel {
         .get()
         .then((query) => {
           if (query.size === 0) {
-            console.log("new user");
             //returns 1 if exist, 0 if it doesn't
             //starred_collection dont exists and therefore user does not have any article saved.
             // set new collection
@@ -93,7 +91,6 @@ class NewsModel {
           } else {
             //starred_collection DOES exist and therefore user has articles saved.
             //update collection with new articles
-            console.log("already existing user");
 
             db.collection("users")
               .doc(this.retrieveUserInfo().uid)
@@ -136,7 +133,7 @@ class NewsModel {
   }
 
   handleQuery(query) {
-    console.log("query", query);
+    // console.log("query", query);
     return fetch(
       `https://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`
     )
@@ -158,7 +155,7 @@ class NewsModel {
       return; //if searchstring contains empty strings the searchNews call is ended to prevent failures
     }
     let API_promise;
-    console.log("searchstr", searchString);
+    // console.log("You searched for: ", searchString);
     if (type === "everything" && searchString !== "") {
       //when searching for news
       API_promise = this.handleQuery(`${type}?q=${searchString}`);

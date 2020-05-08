@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import NewsFeedView from "./NewsFeedView";
-import SearchField from "../search/SearchField";
 
 import { ModelContext } from "../../NewsContext";
 
@@ -36,7 +35,7 @@ const NewsFeed = () => {
     model
       .searchNews(typeState, countryState, categoryState, textState)
       .then((data) => {
-        console.log("data", data);
+        console.log("Articles retrieved from api:", data);
         if (data !== undefined && data.totalResults > 0) {
           setSearchResultState(data.articles);
           data.articles.map((article) => {
@@ -55,7 +54,6 @@ const NewsFeed = () => {
   const searchEverything = (txt, type) => {
     setTypeState(type);
     setTextState(txt);
-    //document.getElementById("search-field").value = "";
   };
 
   return (
@@ -68,6 +66,9 @@ const NewsFeed = () => {
         }}
         isLoading={isLoading}
         search={(txt, type) => searchEverything(txt, type)}
+        reset={(reset) => {
+          setTextState(reset);
+        }}
       />
     </>
   );

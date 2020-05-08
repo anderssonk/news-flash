@@ -4,10 +4,6 @@ import Button from "../button/Button";
 
 const SearchField = ({ search }) => {
   const [input, setInput] = useState(""); // '' is the initial state value
-  //   console.log("input", input);
-  //   const resetInput = () => {
-  //     document.getElementById("search-field").value = "";
-  //   };
   var searchElement = document.getElementById("search-field");
 
   const enterKey = () => {
@@ -19,7 +15,7 @@ const SearchField = ({ search }) => {
     });
   };
 
-  searchElement ? enterKey() : console.log("hello");
+  searchElement ? enterKey() : console.log("");
 
   return (
     <div>
@@ -33,7 +29,6 @@ const SearchField = ({ search }) => {
         id="search-button"
         onClick={() => {
           search(input, "everything");
-          console.log("onclickSearch:", input);
         }}
       >
         <i className="w3-jumbo fa fa-search"></i>

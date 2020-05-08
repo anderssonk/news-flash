@@ -1,15 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ModelContext } from "../../NewsContext";
 import useObserver from "../../hooks/useObserver";
-import firebase from "../../util/firebaseConfig";
-
 import Button from "../button/Button";
 
 const ArticleDisplay = ({ article }) => {
   const [isStarred, setisStarred] = useState(false);
   const { model } = useContext(ModelContext);
   const starredArray = useObserver("starred", model);
-  const db = firebase.firestore();
 
   const removeFromStarred = () => {
     model.removeFromStarred(article.url);

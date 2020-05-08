@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./login.css";
-// import "./typography.css";
 import firebase from "../../util/firebaseConfig";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { ModelContext } from "../../NewsContext";
