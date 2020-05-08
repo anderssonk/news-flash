@@ -40,6 +40,9 @@ a {
   color: #1d70b8;
   text-decoration: none;
 }
+.anchor-url {
+  text-transform: lowercase;
+}
 
 a:hover {
   text-decoration: underline;

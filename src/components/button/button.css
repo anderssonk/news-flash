@@ -1,53 +1,56 @@
 .btn {
-	cursor: pointer;
-	font-family: "Benton Sans", sans-serif;
-	height: 1.8rem;
-	border-color: transparent;
-	border-radius: 0.2rem;
+  cursor: pointer;
+  font-family: "Benton Sans", sans-serif;
+  height: 1.8rem;
+  border-color: transparent;
+  border-radius: 0.2rem;
 }
 
 .btn:focus {
-	outline: transparent;
+  outline: transparent;
 }
 
 .btn-primary {
-	background: #c6d0d8;
-	color: black;
-	margin: 2px;
+  background: #c6d0d8;
+  color: black;
+  margin: 2px;
 }
 
 .btn-primary:hover {
-	background: #00539b;
+  background: #00539b;
 }
 
 .btn-secondary {
-	background-color: transparent;
-	font-size: 1.5rem;
-	line-height: 1.5rem;
-	margin: 0.1rem 0 0;
-	color: rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin: 0.1rem 0 0;
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary:hover,
 .btn-secondary:active {
-	background-color: transparent;
-	color: #eee;
+  background-color: transparent;
+  color: #eee;
 }
 
 .btn-tertiary {
-	background-color: transparent;
-	font-weight: 700;
+  background-color: transparent;
+  font-weight: 700;
+}
+.btn-tertiary:hover {
+  color: rgb(30, 95, 30);
 }
 
 .starred {
-	border: none;
-	color: #2b2b2b;
-	font-size: 1.8rem;
-	background-color: transparent;
+  border: none;
+  color: #2b2b2b;
+  font-size: 1.8rem;
+  background-color: transparent;
 }
 
 .articleDisplay .starred {
-	float: right;
+  float: right;
 }
 
 .starred:hover {

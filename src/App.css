@@ -18,6 +18,7 @@
 }
 
 .header {
+  z-index: 10;
   background: rgb(47, 62, 78);
   /* border-bottom: 5px solid #eee; */
   padding: 0 1rem 0 1rem;
@@ -28,32 +29,6 @@
 
 .page_title {
   grid-column: 2 / span 2;
-}
-
-.preLoggedIn {
-  grid-column: 11/12;
-  height: 4rem;
-}
-
-.login {
-  grid-column: 10/13;
-}
-
-.loggedIn {
-  height: 100%;
-  display: grid;
-  grid-gap: 2px;
-  grid-template-columns: 1fr 1fr 1fr;
-  /*grid-template-columns: repeat(3);*/
-}
-
-.loggedIn_message {
-  grid-column: 2;
-  color: black;
-}
-
-.logout_button {
-  grid-column: 3;
 }
 
 .header.active {
@@ -68,8 +43,8 @@
   grid-template-rows: repeat(2);
 }
 
-::-webkit-scrollbar{
-	display: none;
+::-webkit-scrollbar {
+  display: none;
 }
 
 .sideBar {
@@ -83,6 +58,12 @@
 
 .search-container {
   padding: 10px;
+  position: fixed;
+  background-color: rgba(62, 83, 104, 1);
+  -webkit-box-shadow: 0px 6px 2px -3px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 0px 6px 2px -3px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 6px 2px -3px rgba(0, 0, 0, 0.29);
+  border-radius: 0 0 5px 5px;
 }
 
 .filters {
@@ -93,6 +74,7 @@
 .generated-news {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin-top: 150px;
 }
 
 @media screen and (max-width: 650px) {
@@ -199,6 +181,16 @@
 
 .dropdown:hover {
   color: #4f85c0;
+}
+.comment {
+  background-color: rgba(90, 143, 199, 0.521);
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px dotted;
+}
+
+.scrolled {
+  position: fixed;
 }
 
 .errorview {

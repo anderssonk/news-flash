@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ArticleDisplay from "../articleDisplay/ArticleDisplay";
 import CountrySearch from "../search/NewsCountry";
 import CategorySearch from "../search/NewsCategory";
@@ -9,10 +9,10 @@ import ErrorArticleView from "../errorArticle/ErrorArticle";
 
 
 const NewsFeedView = ({ news, country, category, isLoading, search }) => {
-	return (
-		<div className="mainContent">
-			<div className="search-container">
-				<SearchField search={search} />
+  return (
+    <div className="mainContent">
+      <div className="search-container" id="search-container">
+        <SearchField search={search} />
 
 				<div className="filters">
 					<CategorySearch category={category} />

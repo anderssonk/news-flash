@@ -66,14 +66,17 @@ const Login = () => {
     <>
       {isSignedIn ? (
         <div className="loggedIn">
-          <img
-            id="profileImage"
-            alt="profileIMG"
-            src={firebase.auth().currentUser.photoURL}
-          />
-          <div id="loggedIn_message">
-            Welcome {firebase.auth().currentUser.displayName}
+          <div id="profileImageDiv">
+            <img
+              id="profileImage"
+              alt="profileIMG"
+              src={firebase.auth().currentUser.photoURL}
+            />
+            <div id="loggedIn_message">
+              Logged in as: {firebase.auth().currentUser.displayName}
+            </div>
           </div>
+
           <button
             className="btn-signout"
             id="logout_button"

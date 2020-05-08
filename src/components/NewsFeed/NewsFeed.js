@@ -58,20 +58,19 @@ const NewsFeed = () => {
     //document.getElementById("search-field").value = "";
   };
 
+  return (
+    <>
+      <NewsFeedView
+        news={searchResultState}
+        country={(countrycode) => setCountryState(countrycode)}
+        category={(categoryState) => {
+          setCategoryState(categoryState === "all" ? "general" : categoryState);
+        }}
+        isLoading={isLoading}
+        search={(txt, type) => searchEverything(txt, type)}
+      />
+    </>
+  );
+};
 
-	return (
-		<>
-			<NewsFeedView
-				news={searchResultState}
-				country={(countrycode) => setCountryState(countrycode)}
-				category={(categoryState) => {
-					setCategoryState(categoryState === "all" ? "general" : categoryState);
-				}}
-				isLoading={isLoading}
-				search={(txt, type) => searchEverything(txt, type)}
-			/>
-    
-		</>
-	);
-}
 export default NewsFeed;
