@@ -133,7 +133,7 @@ class NewsModel {
   }
 
   handleQuery(query) {
-    // console.log("query", query);
+    console.log("query", query);
     return fetch(
       `https://newsapi.org/v2/${query}&apiKey=${apiConfig().API_KEY}`
     )

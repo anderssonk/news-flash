@@ -31,10 +31,12 @@ const ArticleDisplay = ({ article }) => {
   return (
     <div key={article.url} className="articleDisplay">
       <div id="img-container">
-        <img
-          src={article.urlToImage ? article.urlToImage : "/no_img.png"}
-          alt="articleimg"
-        />
+        <a href={article.url} target="blank">
+          <img
+            src={article.urlToImage ? article.urlToImage : "/no_img.png"}
+            alt="articleimg"
+          />
+        </a>
       </div>
       <div className="articleDisplay-content">
         <a href={article.url} target="blank">
@@ -45,7 +47,7 @@ const ArticleDisplay = ({ article }) => {
             <a className="anchor-url" href={article.url} target="blank">
               {article.source.name}
             </a>
-            <div>published: {article.publishedAt}</div>
+            <div className="published">published: {article.publishedAt}</div>
           </div>
           <Button starred isStarred={isStarred} onClick={starArticle}></Button>
         </div>

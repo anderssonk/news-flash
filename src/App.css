@@ -37,9 +37,8 @@
 .mainContent {
   overflow-y: scroll;
   grid-column: 2/10;
-  /* background-color: #fff; */
   display: grid;
-  grid-template-rows: repeat(2);
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 ::-webkit-scrollbar {
@@ -56,6 +55,7 @@
 }
 
 .search-container {
+  width: 60vw;
   padding: 10px;
   position: fixed;
   background-color: rgba(62, 83, 104, 1);
@@ -74,14 +74,94 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-top: 150px;
+  grid-column: 1/-1;
 }
 
 @media screen and (max-width: 650px) {
   .generated-news {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 230px);
+    margin-top: 120px;
+  }
+  .published {
+    font-size: 10px;
+  }
+  .login {
+    grid-column: 8/11 !important;
+  }
+  h4 {
+    font-size: 12px !important;
+    margin: 4px !important;
+  }
+  h3.title {
+    font-size: 12px !important;
+    line-height: 1rem;
+  }
+  .sideBar {
+    margin: 0px !important;
+    grid-column: 10/13 !important;
+  }
+  #starredTitle {
+    font-size: 8px !important;
+  }
+  .starredDisplay {
+    background: #eee !important;
+    border-bottom: medium solid #ccc !important;
+    border-radius: 0.5rem !important;
+    margin: 2px !important;
+    padding: 5px !important;
+  }
+  .source {
+    text-transform: lowercase;
+    font-size: 7px !important;
+    margin-top: 2px !important;
+  }
+  .btn-toggle {
+    height: 45% !important;
+    font-size: 7px !important;
+  }
+  .btn-tertiary {
+    background-color: transparent;
+    font-size: 5px !important;
+  }
+  .starred {
+    font-size: 1.2rem !important;
+  }
+
+  .comment {
+    font-size: 6px;
+  }
+  .anchor-url {
+    text-transform: lowercase;
+    font-size: 10px;
+  }
+  #search-field {
+    width: 60% !important;
+    font-size: 12px !important;
+  }
+  .dropdown {
+    font-size: 12px !important;
+    width: 3rem !important;
+  }
+  #profileImage {
+    margin-top: 5px !important;
+    height: 80% !important;
+  }
+  .btn-signout {
+    height: 60%;
+  }
+  #loggedIn_message {
+    display: none !important;
+  }
+  #err404 {
+    font-size: 60px !important;
+  }
+  #noResultError {
+    font-size: 12px !important;
+  }
+  .errorview {
+    height: 40% !important;
   }
 }
-
 #categories {
   display: flex;
   flex-flow: row wrap;
@@ -139,15 +219,15 @@
   flex-grow: 1;
   border: none;
   outline: none;
-  width: 7rem;
-  height: 2.8rem;
+  /* width: 7rem; */
+  /* height: 2.8rem; */
   padding: 0.1rem 0.1rem;
   margin: 0.1rem;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 0.2rem;
   color: #eee;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1vw;
 }
 
 /* Style the active class, and buttons on mouse-over */
